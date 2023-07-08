@@ -22,9 +22,11 @@ window/size/viewport_height=240
 window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/mode="canvas_items"
+window/stretch/scale=1.5
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/lossless_compression/force_png=true

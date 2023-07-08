@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7lxjdm57242o"]
+
+[ext_resource type="Script" path="res://Global.gd" id="1_5lkdq"]
+[ext_resource type="Texture2D" uid="uid://ca58pvijv8oli" path="res://Assets/ammo_meter_full_red.png" id="2_4sf2t"]
+
+[node name="Global" type="Node"]
+script = ExtResource("1_5lkdq")
+
+[node name="UIManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="UIManager"]
+position = Vector2(14, 224)
+texture = ExtResource("2_4sf2t")

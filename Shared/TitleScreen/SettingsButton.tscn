@@ -3,8 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://ba21rpgciikux" path="res://Shared/TitleScreen/NewGameButton.tscn" id="1"]
 
 [node name="SettingsButton" instance=ExtResource("1")]
-size_flags_horizontal = 1
-size_flags_vertical = 1
 
 [node name="Label2" parent="." index="0"]
 text = "Settings"

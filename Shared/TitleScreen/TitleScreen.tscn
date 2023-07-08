@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7vh61i6cu184"]
+[gd_scene load_steps=11 format=3 uid="uid://7vh61i6cu184"]
 
 [ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Shared/TitleScreen/Outrun future.otf" id="2_uacsf"]
 [ext_resource type="PackedScene" uid="uid://7ul6g2a0s5l8" path="res://Shared/TitleScreen/SettingsButton.tscn" id="3"]
@@ -6,7 +6,10 @@
 [ext_resource type="FontFile" uid="uid://dpw7v4rm1ofwh" path="res://Shared/TitleScreen/Cyberthrone-7nP4.ttf" id="4_qyi8o"]
 [ext_resource type="PackedScene" uid="uid://br55ew0i4r1sg" path="res://Shared/TitleScreen/HowToButton.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://ba21rpgciikux" path="res://Shared/TitleScreen/NewGameButton.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://d0p6phdjn6gfo" path="res://Shared/Menu/HowToScreen.tscn" id="6_805es"]
 [ext_resource type="Script" path="res://Shared/TitleScreen/TitleScreen.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://cgnyubn3avbi7" path="res://Shared/Menu/SettingsScreen.tscn" id="7_p5it3"]
+[ext_resource type="PackedScene" uid="uid://bgvuigmxj1r" path="res://Shared/TitleScreen/CreditsScreen.tscn" id="10_f0v7l"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -39,7 +42,7 @@ layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_uacsf")
 theme_override_font_sizes/normal_font_size = 80
 bbcode_enabled = true
-text = "[wave amp=20 freq=6]       GAME JAM :3 uwu"
+text = "[wave amp=20 freq=6]       The Floor is Lava"
 
 [node name="CenterRow" type="HBoxContainer" parent="Menu"]
 layout_mode = 2
@@ -57,14 +60,21 @@ theme_override_fonts/font = ExtResource("4_qyi8o")
 
 [node name="HowToButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("5")]
 layout_mode = 2
+next_scene = ExtResource("6_805es")
 
 [node name="SettingsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("3")]
 layout_mode = 2
+next_scene = ExtResource("7_p5it3")
 
 [node name="CreditsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("4")]
 layout_mode = 2
+next_scene = ExtResource("10_f0v7l")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Menu/CenterRow"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[connection signal="pressed" from="Menu/CenterRow/Buttons/HowToButton" to="Menu/CenterRow/Buttons/HowToButton" method="_on_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/SettingsButton" to="Menu/CenterRow/Buttons/SettingsButton" method="_on_pressed"]
+[connection signal="pressed" from="Menu/CenterRow/Buttons/CreditsButton" to="Menu/CenterRow/Buttons/CreditsButton" method="_on_pressed"]

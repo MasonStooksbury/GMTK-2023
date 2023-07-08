@@ -14,7 +14,7 @@ func _ready() -> void:
 		#button.pressed.connect()
 		#$GridContainer.add_child(button)
 		
-func _on_menu_button_pressed(next_scene):
+func _on_button_pressed(next_scene):
 	# Do this check so that we eliminate the possibility of clicking
 	#		randomly and possibly ending up on the wrong scene
 	if scene_path_to_load == null or scene_path_to_load == "":

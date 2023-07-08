@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://u8aj7te1lq8s"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_6rppb"]
+[ext_resource type="Texture2D" uid="uid://ca58pvijv8oli" path="res://Assets/ammo_meter_full_red.png" id="1_s78nk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kabnc"]
+size = Vector2(15, 7)
+
+[node name="Bullet" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 3
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_6rppb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_kabnc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_s78nk")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

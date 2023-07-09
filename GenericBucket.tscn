@@ -7,7 +7,7 @@
 size = Vector2(10, 12)
 
 [node name="GenericBucket" type="Area2D"]
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_ife0f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,11 +17,20 @@ shape = SubResource("RectangleShape2D_fbx8i")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_st8px")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.06
 one_shot = true
 autostart = true
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="ready" from="Timer" to="." method="_on_timer_ready"]
+[connection signal="ready" from="SpawnTimer" to="." method="_on_spawn_timer_ready"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

@@ -71,7 +71,6 @@ func empty_ammo():
 	change_hud(Global.color_textures[ammo])
 	
 func dump_ammo():
-	#spawn a bucket of ammo color
 	spawn_bucket(global_transform.origin, ammo)
 	empty_ammo()
 

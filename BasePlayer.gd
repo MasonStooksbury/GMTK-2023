@@ -49,6 +49,8 @@ func spawn_bucket(position, color):
 	var b = GENERIC_BUCKET.instantiate()
 	b.color = color
 	b.position = global_transform.origin
-	b.get_node('Timer').wait_time = 3
+	b.get_node('SpawnTimer').wait_time = 2
+	b.get_node('Timer').autostart = false
+	b.dropped = true
 	get_parent().add_child(b)
 	pass

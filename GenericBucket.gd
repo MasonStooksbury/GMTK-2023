@@ -3,7 +3,7 @@ extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node('Sprite2D').texture = Global.color_textures[color]
+	get_node('Sprite2D').texture = Global.bucket_textures[color]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

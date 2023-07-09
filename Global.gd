@@ -21,6 +21,13 @@ var yellow_blob:CompressedTexture2D = load("res://Assets/blob_yellow.png")
 var orange_blob:CompressedTexture2D = load("res://Assets/blob_orange.png")
 var purple_blob:CompressedTexture2D = load("res://Assets/blob_purple.png")
 
+var blue_bucket:CompressedTexture2D = load("res://Assets/bucket_blue.png")
+var red_bucket:CompressedTexture2D = load("res://Assets/bucket_red.png")
+var green_bucket:CompressedTexture2D = load("res://Assets/bucket_green.png")
+var yellow_bucket:CompressedTexture2D = load("res://Assets/bucket_yellow.png")
+var orange_bucket:CompressedTexture2D = load("res://Assets/bucket_orange.png")
+var purple_bucket:CompressedTexture2D = load("res://Assets/bucket_purple.png")
+
 
 var color_textures = {
 	"BLUE": half_blue,
@@ -51,6 +58,21 @@ var blob_textures = {
 	"YELLOWYELLOW": yellow_blob,
 	"YELLOWRED": orange_blob,
 	"YELLOWBLUE": green_blob
+}
+
+var bucket_textures = {
+	"BLUE": blue_bucket,
+	"BLUEBLUE": blue_bucket,
+	"BLUERED": purple_bucket,
+	"BLUEYELLOW": green_bucket,
+	"RED": red_bucket,
+	"REDRED": red_bucket,
+	"REDBLUE": purple_bucket,
+	"REDYELLOW": orange_bucket,
+	"YELLOW": yellow_bucket,
+	"YELLOWYELLOW": yellow_bucket,
+	"YELLOWRED": orange_bucket,
+	"YELLOWBLUE": green_bucket
 }
 
 # Called when the node enters the scene tree for the first time.

@@ -7,6 +7,7 @@ var has_bounced: bool
 func setup(shooter: String, color):
 	self.color = color
 	self.shooter = shooter
+	$Sprite2D.texture = Global.blob_textures[color]
 	
 	
 # Called when the node enters the scene tree for the first time.
@@ -33,5 +34,4 @@ func _on_body_entered(body):
 
 
 func _on_timer_timeout():
-	
-	pass # Replace with function body.
+	queue_free()

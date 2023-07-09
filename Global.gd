@@ -14,6 +14,45 @@ var full_purple:CompressedTexture2D = load("res://Assets/ammo_meter_full_purple.
 var full_orange:CompressedTexture2D = load("res://Assets/ammo_meter_full_orange.png")
 var full_green:CompressedTexture2D = load("res://Assets/ammo_meter_full_green.png")
 
+var blue_blob:CompressedTexture2D = load("res://Assets/blob_blue.png")
+var red_blob:CompressedTexture2D = load("res://Assets/blob_red.png")
+var green_blob:CompressedTexture2D = load("res://Assets/blob_green.png")
+var yellow_blob:CompressedTexture2D = load("res://Assets/blob_yellow.png")
+var orange_blob:CompressedTexture2D = load("res://Assets/blob_orange.png")
+var purple_blob:CompressedTexture2D = load("res://Assets/blob_purple.png")
+
+
+var color_textures = {
+	"BLUE": half_blue,
+	"BLUEBLUE": full_blue,
+	"BLUERED": full_purple,
+	"BLUEYELLOW": full_green,
+	"RED": half_red,
+	"REDRED": full_red,
+	"REDBLUE": full_purple,
+	"REDYELLOW": full_orange,
+	"YELLOW": half_yellow,
+	"YELLOWYELLOW": full_yellow,
+	"YELLOWRED": full_orange,
+	"YELLOWBLUE": full_green,
+	"": empty
+}
+
+var blob_textures = {
+	"BLUE": blue_blob,
+	"BLUEBLUE": blue_blob,
+	"BLUERED": purple_blob,
+	"BLUEYELLOW": green_blob,
+	"RED": red_blob,
+	"REDRED": red_blob,
+	"REDBLUE": purple_blob,
+	"REDYELLOW": orange_blob,
+	"YELLOW": yellow_blob,
+	"YELLOWYELLOW": yellow_blob,
+	"YELLOWRED": orange_blob,
+	"YELLOWBLUE": green_blob
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

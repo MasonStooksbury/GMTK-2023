@@ -7,26 +7,11 @@ const MAX_GROUND_SPEED = 250
 const MAX_AIR_SPEED = 450
 const JUMP_VELOCITY = -350.0
 
-var color_textures = {
-	"BLUE": Global.half_blue,
-	"BLUEBLUE": Global.full_blue,
-	"BLUERED": Global.full_purple,
-	"BLUEYELLOW": Global.full_green,
-	"RED": Global.half_red,
-	"REDRED": Global.full_red,
-	"REDBLUE": Global.full_purple,
-	"REDYELLOW": Global.full_orange,
-	"YELLOW": Global.half_yellow,
-	"YELLOWYELLOW": Global.full_yellow,
-	"YELLOWRED": Global.full_orange,
-	"YELLOWBLUE": Global.full_green,
-	"": Global.empty
-}
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const BULLET_VELOCITY = 650
 const bullet = preload('res://bullet.tscn')
+const GENERIC_BUCKET = preload('res://GenericBucket.tscn')
 
 var _velocity = Vector2()
 var player_color: String
@@ -54,8 +39,16 @@ func fire_projectile(color: String):
 func process_hit(color: String):
 	print('%s hit by %s' % [player_color, color])
 	health -= 1
-	if color == player_color:
+	if color in player_color:
 		health -= 1
 	if health == 0:
 		is_dead = true
 		return
+
+func spawn_bucket(position, color):
+	var b = GENERIC_BUCKET.instantiate()
+	b.color = color
+	b.position = global_transform.origin
+	b.get_node('Timer').wait_time = 3
+	get_parent().add_child(b)
+	pass

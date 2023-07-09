@@ -7,6 +7,8 @@ var color_cycle = []
 var cycle_max = 0
 var is_primary = true
 var dropped = false
+var small_waittime = 10
+var big_waittime = 20
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,9 +20,6 @@ func _ready():
 	get_node('Sprite2D').texture = Global.bucket_textures[color]
 	if not is_primary:
 		scale = Vector2(scale_factor, scale_factor)
-		
-	if not dropped:
-		$RespawnTimer.start()
 	
 
 
@@ -33,7 +32,9 @@ func _on_body_entered(body):
 	var thing = body.fillBucket(color)
 	if not thing:
 		if not dropped:
-			visible = false
+			self.visible = false
+			set_deferred('monitoring', false)
+			$RespawnTimer.wait_time = small_waittime if is_primary else big_waittime
 			$RespawnTimer.start()
 		else:
 			queue_free()
@@ -42,10 +43,10 @@ func _on_body_entered(body):
 
 
 func _on_spawn_timer_ready():
-	monitoring = false
+	set_deferred('monitoring', false)
 	
 func _on_spawn_timer_timeout():
-	monitoring = true
+	set_deferred('monitoring', true)
 
 
 
@@ -57,4 +58,5 @@ func _on_timer_timeout():
 
 
 func _on_respawn_timer_timeout():
-	visible = true
+	self.visible = true
+	set_deferred('monitoring', true)

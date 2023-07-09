@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cva67d22e2l5f"]
+[gd_scene load_steps=10 format=3 uid="uid://cva67d22e2l5f"]
 
 [ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="1_7islc"]
 [ext_resource type="Script" path="res://Shared/Menu/Game.gd" id="1_cuerg"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_pnpjj"]
 [ext_resource type="PackedScene" uid="uid://bqlgmp0l7ns5k" path="res://Player2.tscn" id="4_4jmxc"]
 [ext_resource type="PackedScene" uid="uid://b4g3mphxsam20" path="res://blue_bucket.tscn" id="5_0eowe"]
+[ext_resource type="Texture2D" uid="uid://ca58pvijv8oli" path="res://Assets/ammo_meter_full_red.png" id="7_4t424"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
 texture = ExtResource("1_7islc")
@@ -155,6 +156,18 @@ texture_region_size = Vector2i(18, 18)
 0:3/0/physics_layer_0/angular_velocity = 0.0
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:3/0/terrains_peering_bit/top_side = 0
+2:4/0 = 0
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_4awp6"]
 tile_size = Vector2i(18, 18)
@@ -162,6 +175,8 @@ physics_layer_0/collision_layer = 33
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Ground"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.67451, 0.25098, 1)
+terrain_set_0/terrain_1/name = "Props"
+terrain_set_0/terrain_1/color = Color(0.501961, 0.439216, 1, 1)
 sources/5 = SubResource("TileSetAtlasSource_52ef6")
 
 [node name="Game" type="Node2D"]
@@ -188,3 +203,24 @@ position = Vector2(453, 323)
 
 [node name="BlueBucket" parent="." instance=ExtResource("5_0eowe")]
 position = Vector2(47, 425)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="P1Ammo" type="TextureRect" parent="CanvasLayer"]
+offset_left = 4.0
+offset_top = 134.0
+offset_right = 24.0
+offset_bottom = 154.0
+texture = ExtResource("7_4t424")
+metadata/_edit_use_anchors_ = true
+
+[node name="P2Ammo" type="TextureRect" parent="CanvasLayer"]
+offset_left = 294.0
+offset_top = 135.0
+offset_right = 314.0
+offset_bottom = 155.0
+texture = ExtResource("7_4t424")
+metadata/_edit_use_anchors_ = true
+
+[node name="BlueBucket2" parent="." instance=ExtResource("5_0eowe")]
+position = Vector2(81, 424)

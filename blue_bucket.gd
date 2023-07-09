@@ -1,5 +1,5 @@
 extends Area2D
-
+var color = 'BLUE'
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,5 +12,6 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	body.doStuff()
+	print('still works')
+	body.fillBucket(color)
 	queue_free()

@@ -1,6 +1,7 @@
 extends "res://BasePlayer.gd"
 
 func _ready():
+	empty_ammo()
 	player_color = 'ORANGE'
 
 func _physics_process(delta):
@@ -33,6 +34,16 @@ func _physics_process(delta):
 	# Apply the velocity changes
 	velocity = _velocity
 	move_and_slide()
+
+func fillBucket(color):
+	ammo += color
+	change_hud(color_textures[ammo])
+
+func change_hud(new_texture):
+	get_parent().get_node('CanvasLayer/P2Ammo').texture = new_texture
+	
+func empty_ammo():
+	change_hud(Global.empty)
 	_velocity = velocity
 
 

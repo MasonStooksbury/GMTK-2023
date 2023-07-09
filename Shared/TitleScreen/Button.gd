@@ -6,4 +6,5 @@ extends Button
 #	$AnimationPlayer.play("Pulse")
 
 func _on_pressed():
+	print('F')
 	get_tree().change_scene_to_packed(next_scene)

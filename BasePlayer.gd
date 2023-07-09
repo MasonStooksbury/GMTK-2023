@@ -52,6 +52,8 @@ func _ready():
 	$Sprite2D.texture = load(sprites[player_num])
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed('quit'):
+		get_tree().change_scene_to_file('res://Shared/TitleScreen/TitleScreen.tscn')
 	# Add the gravity.
 	if not is_on_floor():
 		_velocity.y += gravity * delta

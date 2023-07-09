@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://5ru16f7ig26u"]
+
+[ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Shared/TitleScreen/Outrun future.otf" id="1_uyj1c"]
+[ext_resource type="Script" path="res://Shared/EndScreen.gd" id="1_ydja3"]
+[ext_resource type="PackedScene" uid="uid://blhcm5ue814y0" path="res://Shared/TitleScreen/MainMenuButton.tscn" id="3_f40hw"]
+[ext_resource type="PackedScene" uid="uid://7vh61i6cu184" path="res://Shared/TitleScreen/TitleScreen.tscn" id="5_3vhpa"]
+
+[node name="EndScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ydja3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(440, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -82.0
+offset_right = 32.0
+offset_bottom = 82.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Menu"]
+custom_minimum_size = Vector2(440, 75)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("1_uyj1c")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[wave amp=20 freq=6]          VICTORY!"
+
+[node name="MainMenuButton" parent="MarginContainer/Menu" instance=ExtResource("3_f40hw")]
+layout_mode = 2
+size_flags_horizontal = 4
+flat = false
+next_scene = ExtResource("5_3vhpa")
+
+[connection signal="pressed" from="MarginContainer/Menu/MainMenuButton" to="MarginContainer/Menu/MainMenuButton" method="_on_pressed"]

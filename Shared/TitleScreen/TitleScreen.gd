@@ -4,15 +4,6 @@ var scene_path_to_load
 
 func _ready() -> void:
 	randomize()
-	#get_node('/root/Globals')._play('title')
-	# Connect the pressed() method of every scene to this scene
-#	for button in $Menu/CenterRow/Buttons.get_children():
-#		button.connect("pressed", self, "_on_menu_button_pressed", [button.next_scene])
-		
-		
-	#for button in $Menu/CenterRow/Buttons.get_children():
-		#button.pressed.connect()
-		#$GridContainer.add_child(button)
 		
 func _on_button_pressed(next_scene):
 	# Do this check so that we eliminate the possibility of clicking

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_pnpjj"]
 [ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="7_62xr5"]
 [ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="8_ontuu"]
-[ext_resource type="PackedScene" path="res://health_indicator.tscn" id="8_vuu26"]
+[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="8_vuu26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
 texture = ExtResource("1_7islc")
@@ -240,15 +240,43 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="GenericBucket" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(319, 413)
+position = Vector2(114, 420)
+color = "BLUE"
+
+[node name="GenericBucket6" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(-71, 319)
 color = "RED"
+
+[node name="GenericBucket7" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(70, 62)
+color = "RED"
+
+[node name="GenericBucket8" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(316, 42)
+color = "YELLOW"
+
+[node name="GenericBucket9" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(558, 41)
+color = "BLUE"
+
+[node name="GenericBucket10" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(664, 434)
+color = "RED"
+
+[node name="GenericBucket11" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(659, 312)
+color = "RED"
+
+[node name="GenericBucket12" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(-107, 78)
+color = "YELLOW"
 
 [node name="GenericBucket2" parent="." instance=ExtResource("8_ontuu")]
 position = Vector2(0, 242)
 color = "BLUE"
 
 [node name="GenericBucket3" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(336, 416)
+position = Vector2(230, 239)
 color = "YELLOW"
 
 [node name="GenericBucket4" parent="." instance=ExtResource("8_ontuu")]
@@ -256,7 +284,7 @@ position = Vector2(47, 166)
 color = "BLUE"
 
 [node name="GenericBucket5" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(323, 294)
+position = Vector2(377, 222)
 color = "REDBLUE"
 
 [node name="Player2" parent="." instance=ExtResource("2_1rp70")]

@@ -25,4 +25,4 @@ func handle_zoom(distance):
 	
 func player_health_check():
 	if $Player.is_dead or $Player2.is_dead:
-		get_tree().change_scene_to_file("res://end_screen.tscn")
+		get_tree().change_scene_to_file("res://Shared/EndScreen.tscn")

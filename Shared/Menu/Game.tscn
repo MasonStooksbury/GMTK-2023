@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_pnpjj"]
 [ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="7_62xr5"]
 [ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="8_ontuu"]
-[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="8_vuu26"]
+[ext_resource type="PackedScene" path="res://health_indicator.tscn" id="8_vuu26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
 texture = ExtResource("1_7islc")
@@ -255,6 +255,10 @@ color = "YELLOW"
 position = Vector2(47, 166)
 color = "BLUE"
 
+[node name="GenericBucket5" parent="." instance=ExtResource("8_ontuu")]
+position = Vector2(323, 294)
+color = "REDBLUE"
+
 [node name="Player2" parent="." instance=ExtResource("2_1rp70")]
-position = Vector2(213, 373)
+position = Vector2(448, 339)
 player_num = "p2"

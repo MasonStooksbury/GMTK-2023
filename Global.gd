@@ -75,6 +75,10 @@ var bucket_textures = {
 	"YELLOWBLUE": green_bucket
 }
 
+var primary_colors = ['RED', 'BLUE', 'YELLOW']
+var complex_colors = ["BLUEBLUE", "BLUERED", "BLUEYELLOW", "REDRED", "REDBLUE", "REDYELLOW", "YELLOWYELLOW", "YELLOWRED", "YELLOWBLUE"]
+var deduped_complex_colors = ["BLUEBLUE", "REDRED", "YELLOWYELLOW", "REDBLUE", "REDYELLOW", "YELLOWBLUE"]
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.

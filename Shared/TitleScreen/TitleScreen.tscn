@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://7vh61i6cu184"]
+[gd_scene load_steps=12 format=3 uid="uid://7vh61i6cu184"]
 
 [ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Shared/TitleScreen/Outrun future.otf" id="2_uacsf"]
 [ext_resource type="PackedScene" uid="uid://7ul6g2a0s5l8" path="res://Shared/TitleScreen/SettingsButton.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://dbwp1lhpowj1v" path="res://Shared/TitleScreen/CreditsButton.tscn" id="4"]
 [ext_resource type="FontFile" uid="uid://dpw7v4rm1ofwh" path="res://Shared/TitleScreen/Cyberthrone-7nP4.ttf" id="4_qyi8o"]
 [ext_resource type="PackedScene" uid="uid://br55ew0i4r1sg" path="res://Shared/TitleScreen/HowToButton.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cva67d22e2l5f" path="res://Shared/Menu/Game.tscn" id="5_vli87"]
 [ext_resource type="PackedScene" uid="uid://ba21rpgciikux" path="res://Shared/TitleScreen/NewGameButton.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d0p6phdjn6gfo" path="res://Shared/Menu/HowToScreen.tscn" id="6_805es"]
 [ext_resource type="Script" path="res://Shared/TitleScreen/TitleScreen.gd" id="7"]
@@ -12,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bgvuigmxj1r" path="res://Shared/TitleScreen/CreditsScreen.tscn" id="10_f0v7l"]
 
 [node name="TitleScreen" type="Control"]
+custom_minimum_size = Vector2(480, 240)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,61 +22,71 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7")
 
-[node name="Menu" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(1000, 550)
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(440, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = -24.0
-offset_right = 6.0
-offset_bottom = 24.0
+offset_left = -32.0
+offset_top = -82.0
+offset_right = 32.0
+offset_bottom = 82.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
 alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Menu"]
-custom_minimum_size = Vector2(0, 150)
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Menu"]
+custom_minimum_size = Vector2(440, 75)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_uacsf")
-theme_override_font_sizes/normal_font_size = 80
+theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
-text = "[wave amp=20 freq=6]       The Floor is Lava"
+text = "[wave amp=20 freq=6]       Swatch Bots"
 
-[node name="CenterRow" type="HBoxContainer" parent="Menu"]
+[node name="CenterRow" type="HBoxContainer" parent="MarginContainer/Menu"]
 layout_mode = 2
-size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="Menu/CenterRow"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/Menu/CenterRow"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
-theme_override_constants/separation = 40
+theme_override_constants/separation = 5
 
-[node name="NewGameButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("6")]
+[node name="NewGameButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("6")]
+custom_minimum_size = Vector2(60, 10)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("4_qyi8o")
+theme_override_font_sizes/font_size = 10
+next_scene = ExtResource("5_vli87")
 
-[node name="HowToButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("5")]
+[node name="HowToButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("5")]
+custom_minimum_size = Vector2(60, 10)
 layout_mode = 2
 next_scene = ExtResource("6_805es")
 
-[node name="SettingsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("3")]
+[node name="SettingsButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("3")]
+visible = false
+custom_minimum_size = Vector2(60, 10)
 layout_mode = 2
 next_scene = ExtResource("7_p5it3")
 
-[node name="CreditsButton" parent="Menu/CenterRow/Buttons" instance=ExtResource("4")]
+[node name="CreditsButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("4")]
+custom_minimum_size = Vector2(60, 10)
 layout_mode = 2
 next_scene = ExtResource("10_f0v7l")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/CenterRow"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Menu/CenterRow"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[connection signal="pressed" from="Menu/CenterRow/Buttons/HowToButton" to="Menu/CenterRow/Buttons/HowToButton" method="_on_pressed"]
-[connection signal="pressed" from="Menu/CenterRow/Buttons/SettingsButton" to="Menu/CenterRow/Buttons/SettingsButton" method="_on_pressed"]
-[connection signal="pressed" from="Menu/CenterRow/Buttons/CreditsButton" to="Menu/CenterRow/Buttons/CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/NewGameButton" to="MarginContainer/Menu/CenterRow/Buttons/NewGameButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/HowToButton" to="MarginContainer/Menu/CenterRow/Buttons/HowToButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/SettingsButton" to="MarginContainer/Menu/CenterRow/Buttons/SettingsButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/CreditsButton" to="MarginContainer/Menu/CenterRow/Buttons/CreditsButton" method="_on_pressed"]

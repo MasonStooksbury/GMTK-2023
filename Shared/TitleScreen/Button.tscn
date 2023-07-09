@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dpw7v4rm1ofwh" path="res://Shared/TitleScreen/Cyberthrone-7nP4.ttf" id="2_7fqm5"]
 
 [node name="MenuButton" type="Button"]
-custom_minimum_size = Vector2(360, 60)
+custom_minimum_size = Vector2(60, 10)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 flat = true

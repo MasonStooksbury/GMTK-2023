@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgvuigmxj1r"]
+[gd_scene load_steps=3 format=3 uid="uid://bgvuigmxj1r"]
 
 [ext_resource type="Script" path="res://Shared/TitleScreen/return_to_title.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://brvwsjvgax2uo" path="res://Assets/Us.jpg" id="2_hel46"]
 
 [node name="CreditsScreen" type="Control"]
-custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,103 +12,42 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(1152, 648)
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 33.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -75.0
+offset_right = 220.0
+offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="CenterContainer"]
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(75, 100)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("2_hel46")
+expand_mode = 1
+stretch_mode = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer1"]
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 8
+text = "Mason Stooksbury & Johnathan Wood"
 
-[node name="Derek" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer1"]
 layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Derek"]
-layout_mode = 2
-
-[node name="Name" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Derek"]
-layout_mode = 2
-text = "Derek Coblentz"
-
-[node name="Description" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Derek"]
-layout_mode = 2
-text = "All things pixel art and self-deprecation. Came
-up with the name for the game, created the level
-design, character art, and worked on various
-portions of the code. (Loves his wife)
-
-Game Jam snack of choice: Beef Jerky
-
-"
-
-[node name="Levi" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Levi"]
-layout_mode = 2
-
-[node name="Name" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Levi"]
-layout_mode = 2
-text = "Levi Koger"
-
-[node name="Description" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Levi"]
-layout_mode = 2
-text = "All things code and coffee. Responsible for
-most code, character movement, AI, random
-energy paths, boss fight, round progression,
-particle effects, \"How To Play\" screen, and more.
-
-Game Jam snack of choice: Swiss Rolls"
-
-[node name="Mason" type="VBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Mason"]
-layout_mode = 2
-
-[node name="Name" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Mason"]
-layout_mode = 2
-text = "Mason Stooksbury"
-
-[node name="Description" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/Mason"]
-layout_mode = 2
-text = "All things music and being cold. Did all of the
-music and almost all of the UI/Main menu. Wrote,
-directed, and edited the intro video. Created the Itch.io
-page and an album on SoundCloud.
-
-Game Jam snack of choice: Cheez-its and Milo's tea"
-
-[node name="Footer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/Footer"]
-layout_mode = 2
-
-[node name="Dan" type="HBoxContainer" parent="CenterContainer/MarginContainer/VBoxContainer/Footer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CenterContainer/MarginContainer/VBoxContainer/Footer/HBoxContainer/Dan"]
-layout_mode = 2
-text = "Voiceover provided by Dan Johnson:
-https://www.fiverr.com/danjohnsonvoice"
-
-[node name="Button" type="Button" parent="CenterContainer/MarginContainer/VBoxContainer/Footer/HBoxContainer"]
-layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 7
 text = "Back"
-flat = true
 
-[connection signal="mouse_entered" from="CenterContainer/MarginContainer/VBoxContainer/Footer/HBoxContainer/Button" to="." method="_on_BackLabel_mouse_entered"]
-[connection signal="pressed" from="CenterContainer/MarginContainer/VBoxContainer/Footer/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer1/Button" to="." method="_on_button_pressed"]

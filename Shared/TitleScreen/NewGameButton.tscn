@@ -36,9 +36,10 @@ layout_mode = 0
 text = "New Game"
 
 [node name="Label" parent="." index="1"]
-custom_minimum_size = Vector2(360, 60)
-offset_right = 1.0
-offset_bottom = 23.0
+custom_minimum_size = Vector2(60, 10)
+offset_right = 369.0
+offset_bottom = 99.0
+theme_override_font_sizes/font_size = 10
 text = "New Game"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]

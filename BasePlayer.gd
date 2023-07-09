@@ -126,7 +126,6 @@ func can_walljump():
 func can_fire():
 	return ammo_count >=2
 	
-		
 func fire_projectile(color: String):
 	if can_fire():
 		var b = bullet.instantiate()
@@ -167,15 +166,10 @@ func empty_ammo():
 	change_hud(Global.color_textures[ammo])
 	
 func dump_ammo():
-	#spawn a bucket of ammo color
 	spawn_bucket(global_transform.origin, ammo)
 	empty_ammo()
 
 func fillBucket(color):
-	# ammo full, return
-	# <= 1, hit primary color
-	#	ammo += color
-	#	ammount_count += 1
 	if ammo_count == 2:
 		return true
 	if (ammo_count <= 1 and color in ['RED', 'BLUE', 'YELLOW']):

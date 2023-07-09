@@ -1,9 +1,9 @@
 extends Area2D
-var color = 'BLUE'
+@export_enum('RED', 'BLUE', 'YELLOW') var color: String
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,6 +12,6 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	print('still works')
+	print(color)
 	body.fillBucket(color)
 	queue_free()

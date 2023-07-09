@@ -37,7 +37,7 @@ func _physics_process(delta):
 
 func fillBucket(color):
 	ammo += color
-	change_hud(color_textures[ammo])
+	change_hud(Global.color_textures[ammo])
 
 func change_hud(new_texture):
 	get_parent().get_node('CanvasLayer/P2Ammo').texture = new_texture
@@ -54,7 +54,6 @@ func fire_projectile():
 		b.position = global_transform.origin + Vector2(0, -3.0)
 		b.apply_impulse((Vector2.LEFT if $Sprite2D.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
 		get_parent().add_child(b)
-	
 	pass
 	
 func process_hit(color: String):

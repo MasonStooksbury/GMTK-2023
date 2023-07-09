@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 func fillBucket(color):
 	ammo += color
-	change_hud(color_textures[ammo])
+	change_hud(Global.color_textures[ammo])
 
 func change_hud(new_texture):
 	get_parent().get_node('CanvasLayer/P1Ammo').texture = new_texture

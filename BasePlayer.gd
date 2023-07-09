@@ -7,13 +7,6 @@ const MAX_GROUND_SPEED = 250
 const MAX_AIR_SPEED = 450
 const JUMP_VELOCITY = -350.0
 
-var color_textures = {
-	"BLUE": Global.half_blue,
-	"BLUEBLUE": Global.full_blue,
-	"RED": Global.half_red,
-	"REDRED": Global.full_red
-}
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const BULLET_VELOCITY = 650

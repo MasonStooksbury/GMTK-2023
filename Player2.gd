@@ -1,5 +1,8 @@
 extends "res://BasePlayer.gd"
 
+func _ready():
+	empty_ammo()
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
@@ -18,3 +21,13 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func fillBucket(color):
+	change_hud(determine_new_texture(color, ammo))
+	ammo += 1
+
+func change_hud(new_texture):
+	get_parent().get_node('CanvasLayer/P2Ammo').texture = new_texture
+	
+func empty_ammo():
+	change_hud(Global.empty)

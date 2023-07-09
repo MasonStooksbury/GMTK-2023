@@ -1,7 +1,6 @@
 extends "res://BasePlayer.gd"
 
 func _ready():
-	empty_ammo()
 	player_color = 'ORANGE'
 
 func _physics_process(delta):
@@ -12,6 +11,10 @@ func _physics_process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("p1_jump") and is_on_floor():
 		_velocity.y += JUMP_VELOCITY
+		
+	# Handle Dump.
+	if Input.is_action_just_pressed("p1_dump"):
+		dump_ammo()
 		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -30,19 +33,39 @@ func _physics_process(delta):
 	_velocity.y = clamp(_velocity.y,  -MAX_AIR_SPEED, MAX_AIR_SPEED)
 	
 	if Input.is_action_just_pressed("p1_fire"):
-		fire_projectile()
+		fire_projectile(ammo)
 	# Apply the velocity changes
 	velocity = _velocity
 	move_and_slide()
 	_velocity = velocity
 
 func fillBucket(color):
-	ammo += color
+	if ammo_count <= 2 and color not in ['REDBLUE', 'BLUERED', 'REDYELLOW', 'YELLOWRED', 'BLUEYELLOW', 'YELLOWBLUE']:
+		ammo += color
+		ammo_count += 1
+	elif ammo_count == 0 and color in ['REDBLUE', 'BLUERED', 'REDYELLOW', 'YELLOWRED', 'BLUEYELLOW', 'YELLOWBLUE' ]:
+		ammo = color
+		ammo_count = 2
+	
 	change_hud(color_textures[ammo])
 
 func change_hud(new_texture):
 	get_parent().get_node('CanvasLayer/P1Ammo').texture = new_texture
 	
 func empty_ammo():
-	change_hud(Global.empty)
 	ammo = ''
+	ammo_count = 0
+	change_hud(color_textures[ammo])
+	
+func dump_ammo():
+	#spawn a bucket of ammo color
+	empty_ammo()
+	
+func process_hit(color: String):
+	super.process_hit(color)
+	get_parent().get_node('CanvasLayer/P1HealthIndicator').display_health(health)
+	
+func fire_projectile(color: String):
+	super.fire_projectile(ammo)
+	change_hud(color_textures[ammo])
+	

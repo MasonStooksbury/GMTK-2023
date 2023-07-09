@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://xtihi8dtb6xa"]
+
+[ext_resource type="Script" path="res://HealthIndicator.gd" id="1_ovfld"]
+[ext_resource type="Texture2D" uid="uid://bl7fykbs7w50b" path="res://heart.png" id="2_8ppdi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dh57i"]
+atlas = ExtResource("2_8ppdi")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rig1y"]
+atlas = ExtResource("2_8ppdi")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy3dy"]
+atlas = ExtResource("2_8ppdi")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0rat0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dh57i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rig1y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy3dy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="HealthIndicator" type="Control"]
+custom_minimum_size = Vector2(48, 16)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -432.0
+offset_bottom = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovfld")
+
+[node name="heart1" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_0rat0")
+
+[node name="heart2" type="AnimatedSprite2D" parent="."]
+position = Vector2(24, 8)
+sprite_frames = SubResource("SpriteFrames_0rat0")
+
+[node name="heart3" type="AnimatedSprite2D" parent="."]
+position = Vector2(40, 8)
+sprite_frames = SubResource("SpriteFrames_0rat0")

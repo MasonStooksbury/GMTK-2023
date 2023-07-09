@@ -18,3 +18,11 @@ texture = ExtResource("2_k24qd")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
+hit_from_inside = true
+
+[node name="RightRay" type="RayCast2D" parent="."]
+target_position = Vector2(20, 0)
+hit_from_inside = true

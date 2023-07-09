@@ -260,5 +260,5 @@ position = Vector2(323, 294)
 color = "REDBLUE"
 
 [node name="Player2" parent="." instance=ExtResource("2_1rp70")]
-position = Vector2(213, 373)
+position = Vector2(448, 339)
 player_num = "p2"

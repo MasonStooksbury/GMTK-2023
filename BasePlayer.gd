@@ -56,7 +56,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		_velocity.y += gravity * delta
 	
-	# Handle Dump
+	# Handle Dump.
 	if Input.is_action_just_pressed(get_action(player_num, 'DUMP')) and ammo_count > 0:
 		dump_ammo()
 	

@@ -104,21 +104,16 @@ func get_action(player_num, action):
 	
 
 func can_walljump():
-	var leftHit = false
-	var rightHit = false
-	
-	# Check if the left or right ray hits a vertical suface
-	if $LeftRay.is_colliding():
-		leftHit = abs($LeftRay.get_collision_normal().y) < 0.5 and abs($LeftRay.get_collision_normal().x) > 0.5
-	if $RightRay.is_colliding():
-		rightHit = abs($RightRay.get_collision_normal().y) < 0.5 and abs($RightRay.get_collision_normal().x) > 0.5
+	var leftHit = $LeftRay.is_colliding()
+	var rightHit = $RightRay.is_colliding()
 	
 	if not is_on_floor():
+		print('not on floor')
 		if leftHit and rightHit:
 			return 'BOTH'  
-		elif leftHit and not rightHit:
+		elif leftHit:
 			return 'RIGHT'
-		elif rightHit and not leftHit:
+		elif rightHit:
 			return 'LEFT'
 		
 	return 'NONE'

@@ -1,7 +1,9 @@
 extends "res://BasePlayer.gd"
 
 func _ready():
-	player_color = 'ORANGE'
+	empty_ammo()
+	player_color = 'REDBLUERED'
+
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -13,7 +15,7 @@ func _physics_process(delta):
 		_velocity.y += JUMP_VELOCITY
 		
 	# Handle Dump.
-	if Input.is_action_just_pressed("p2_dump"):
+	if Input.is_action_just_pressed("p2_dump") and ammo_count > 0:
 		dump_ammo()
 		
 	# Get the input direction and handle the movement/deceleration.
@@ -39,15 +41,26 @@ func _physics_process(delta):
 	move_and_slide()
 	_velocity = velocity
 
+
 func fillBucket(color):
-	if ammo_count <= 2 and color not in ['REDBLUE', 'BLUERED', 'REDYELLOW', 'YELLOWRED', 'BLUEYELLOW', 'YELLOWBLUE']:
+	# ammo full, return
+	# <= 1, hit primary color
+	#	ammo += color
+	#	ammount_count += 1
+	if ammo_count == 2:
+		return true
+	if (ammo_count <= 1 and color in ['RED', 'BLUE', 'YELLOW']):
 		ammo += color
 		ammo_count += 1
-	elif ammo_count == 0 and color in ['REDBLUE', 'BLUERED', 'REDYELLOW', 'YELLOWRED', 'BLUEYELLOW', 'YELLOWBLUE' ]:
-		ammo = color
-		ammo_count = 2
+	elif (ammo_count == 0 and color not in ['RED', 'BLUE', 'YELLOW']):
+		ammo += color
+		ammo_count += 2
+	else:
+		return true
 	
-	change_hud(color_textures[ammo])
+	
+	change_hud(Global.color_textures[ammo])
+	return false
 
 func change_hud(new_texture):
 	get_parent().get_node('CanvasLayer/P2Ammo').texture = new_texture
@@ -55,17 +68,18 @@ func change_hud(new_texture):
 func empty_ammo():
 	ammo = ''
 	ammo_count = 0
-	change_hud(color_textures[ammo])
+	change_hud(Global.color_textures[ammo])
 	
 func dump_ammo():
 	#spawn a bucket of ammo color
+	spawn_bucket(global_transform.origin, ammo)
 	empty_ammo()
-	
+
+
 func process_hit(color: String):
 	super.process_hit(color)
 	get_parent().get_node('CanvasLayer/P2HealthIndicator').display_health(health)
 	
 func fire_projectile(color: String):
 	super.fire_projectile(ammo)
-	change_hud(color_textures[ammo])
-	
+	change_hud(Global.color_textures[ammo])

@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -350.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const BULLET_VELOCITY = 650
 const bullet = preload('res://bullet.tscn')
+const GENERIC_BUCKET = preload('res://GenericBucket.tscn')
 
 var _velocity = Vector2()
 var player_color: String
@@ -38,8 +39,16 @@ func fire_projectile(color: String):
 func process_hit(color: String):
 	print('%s hit by %s' % [player_color, color])
 	health -= 1
-	if color == player_color:
+	if color in player_color:
 		health -= 1
 	if health == 0:
 		is_dead = true
 		return
+
+func spawn_bucket(position, color):
+	var b = GENERIC_BUCKET.instantiate()
+	b.color = color
+	b.position = global_transform.origin
+	b.get_node('Timer').wait_time = 3
+	get_parent().add_child(b)
+	pass

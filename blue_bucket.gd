@@ -12,5 +12,6 @@ func _process(delta):
 
 
 func _on_body_entered(body):
+	print('still works')
 	body.fillBucket(color)
 	queue_free()

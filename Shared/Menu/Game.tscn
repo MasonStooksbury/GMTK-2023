@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_pnpjj"]
 [ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="7_62xr5"]
 [ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="8_ontuu"]
-[ext_resource type="PackedScene" path="res://health_indicator.tscn" id="8_vuu26"]
+[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="8_vuu26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
 texture = ExtResource("1_7islc")
@@ -227,6 +227,7 @@ offset_right = 73.0
 offset_bottom = 152.0
 grow_horizontal = 1
 grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="p2HealthIndicator" parent="CanvasLayer" instance=ExtResource("8_vuu26")]
 anchors_preset = 0
@@ -238,6 +239,7 @@ offset_right = 296.0
 offset_bottom = 153.0
 grow_horizontal = 1
 grow_vertical = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="GenericBucket" parent="." instance=ExtResource("8_ontuu")]
 position = Vector2(319, 413)

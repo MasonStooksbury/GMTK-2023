@@ -63,7 +63,7 @@ func dump_ammo():
 	
 func process_hit(color: String):
 	super.process_hit(color)
-	get_parent().get_node('CanvasLayer/P2aHealthIndicator').display_health(health)
+	get_parent().get_node('CanvasLayer/P2HealthIndicator').display_health(health)
 	
 func fire_projectile(color: String):
 	super.fire_projectile(ammo)

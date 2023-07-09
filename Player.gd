@@ -30,7 +30,7 @@ func _physics_process(delta):
 	_velocity.y = clamp(_velocity.y,  -MAX_AIR_SPEED, MAX_AIR_SPEED)
 	
 	if Input.is_action_just_pressed("p1_fire"):
-		fire_projectile()
+		fire_projectile(ammo)
 	# Apply the velocity changes
 	velocity = _velocity
 	move_and_slide()

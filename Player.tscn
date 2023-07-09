@@ -1,14 +1,68 @@
 [gd_scene load_steps=4 format=3 uid="uid://csjats1uasqe5"]
 
-[ext_resource type="Script" path="res://Player.gd" id="1_gyqsl"]
 [ext_resource type="Texture2D" uid="uid://ygfqxbuoptwf" path="res://Assets/boi2.png" id="2_k24qd"]
+
+[sub_resource type="GDScript" id="GDScript_scs6x"]
+script/source = "extends \"res://BasePlayer.gd\"
+
+#func _ready():
+#	empty_ammo()
+#	player_color = 'REDYELLOWRED'
+	
+#func _physics_process(delta):
+#	super.process_physics(delta)
+	# Handle Dump.
+#	if Input.is_action_just_pressed(get_action(player_num, 'DUMP')) and ammo_count > 0:
+#		dump_ammo()
+
+#func fillBucket(color):
+#	# ammo full, return
+#	# <= 1, hit primary color
+#	#	ammo += color
+#	#	ammount_count += 1
+#	if ammo_count == 2:
+#		return true
+#	if (ammo_count <= 1 and color in ['RED', 'BLUE', 'YELLOW']):
+#		ammo += color
+#		ammo_count += 1
+#	elif (ammo_count == 0 and color not in ['RED', 'BLUE', 'YELLOW']):
+#		ammo += color
+#		ammo_count += 2
+#	else:
+#		return true
+#
+#	change_hud(Global.color_textures[ammo])
+#	return false
+
+#func change_hud(new_texture):
+#	get_parent().get_node('CanvasLayer/%sAmmo' % player_num).texture = new_texture
+#
+#func empty_ammo():
+#	ammo = ''
+#	ammo_count = 0
+#	change_hud(Global.color_textures[ammo])
+#
+#func dump_ammo():
+#	#spawn a bucket of ammo color
+#	spawn_bucket(global_transform.origin, ammo)
+#	empty_ammo()
+#
+#
+#func process_hit(color: String):
+#	super.process_hit(color)
+#	get_parent().get_node('CanvasLayer/%sHealthIndicator' % player_num).display_health(health)
+#
+#func fire_projectile(color: String):
+#	super.fire_projectile(ammo)
+#	change_hud(Global.color_textures[ammo])
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h1wy"]
 size = Vector2(12, 18)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
-script = ExtResource("1_gyqsl")
+script = SubResource("GDScript_scs6x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2h1wy")
@@ -18,3 +72,13 @@ texture = ExtResource("2_k24qd")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="LeftRay" type="RayCast2D" parent="."]
+rotation = 1.5708
+target_position = Vector2(0, 20)
+hit_from_inside = true
+
+[node name="RightRay" type="RayCast2D" parent="."]
+rotation = -1.5708
+target_position = Vector2(0, 20)
+hit_from_inside = true

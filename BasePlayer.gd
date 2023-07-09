@@ -52,6 +52,8 @@ func _ready():
 	$Sprite2D.texture = load(sprites[player_num])
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed('quit'):
+		get_tree().change_scene_to_file('res://Shared/TitleScreen/TitleScreen.tscn')
 	# Add the gravity.
 	if not is_on_floor():
 		_velocity.y += gravity * delta
@@ -97,7 +99,15 @@ func _physics_process(delta):
 	move_and_slide()
 	_velocity = velocity
 	
-
+func fell_in_fray():
+	health -= 1
+	if health == 0:
+		is_dead = true
+		return 
+	get_parent().get_node('CanvasLayer/%sHealthIndicator' % player_num).display_health(health)
+	var player_spawn_array = get_parent().get_node('PlayerSpawnOptions').get_children()
+	var random_spawn = player_spawn_array[randi() % player_spawn_array.size()]
+	global_transform.origin = random_spawn.global_transform.origin
 
 func get_action(player_num, action):
 	return controls[player_num][action]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="GameJam-Template"
-run/main_scene="res://how_to.tscn"
+run/main_scene="res://Shared/TitleScreen/TitleScreen.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 

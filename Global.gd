@@ -7,6 +7,12 @@ var half_blue:CompressedTexture2D = load("res://Assets/ammo_meter_half_blue.png"
 var full_blue:CompressedTexture2D = load("res://Assets/ammo_meter_full_blue.png")
 var half_red:CompressedTexture2D = load("res://Assets/ammo_meter_half_red.png")
 var full_red:CompressedTexture2D = load("res://Assets/ammo_meter_full_red.png")
+var half_yellow:CompressedTexture2D = load("res://Assets/ammo_meter_half_yellow.png")
+var full_yellow:CompressedTexture2D = load("res://Assets/ammo_meter_full_yellow.png")
+
+var full_purple:CompressedTexture2D = load("res://Assets/ammo_meter_full_purple.png")
+var full_orange:CompressedTexture2D = load("res://Assets/ammo_meter_full_orange.png")
+var full_green:CompressedTexture2D = load("res://Assets/ammo_meter_full_green.png")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

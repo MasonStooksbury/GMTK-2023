@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cva67d22e2l5f"]
+[gd_scene load_steps=11 format=3 uid="uid://cva67d22e2l5f"]
 
 [ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="1_7islc"]
 [ext_resource type="Script" path="res://Shared/Menu/Game.gd" id="1_cuerg"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_pnpjj"]
 [ext_resource type="PackedScene" uid="uid://bqlgmp0l7ns5k" path="res://Player2.tscn" id="4_4jmxc"]
 [ext_resource type="PackedScene" uid="uid://b4g3mphxsam20" path="res://blue_bucket.tscn" id="5_0eowe"]
-[ext_resource type="Texture2D" uid="uid://ca58pvijv8oli" path="res://Assets/ammo_meter_full_red.png" id="7_4t424"]
+[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="7_62xr5"]
+[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="8_vuu26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
 texture = ExtResource("1_7islc")
@@ -211,7 +212,7 @@ offset_left = 4.0
 offset_top = 134.0
 offset_right = 24.0
 offset_bottom = 154.0
-texture = ExtResource("7_4t424")
+texture = ExtResource("7_62xr5")
 metadata/_edit_use_anchors_ = true
 
 [node name="P2Ammo" type="TextureRect" parent="CanvasLayer"]
@@ -219,8 +220,30 @@ offset_left = 294.0
 offset_top = 135.0
 offset_right = 314.0
 offset_bottom = 155.0
-texture = ExtResource("7_4t424")
+texture = ExtResource("7_62xr5")
 metadata/_edit_use_anchors_ = true
+
+[node name="P1HealthIndicator" parent="CanvasLayer" instance=ExtResource("8_vuu26")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 136.0
+offset_right = 73.0
+offset_bottom = 152.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="P2HealthIndicator" parent="CanvasLayer" instance=ExtResource("8_vuu26")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 248.0
+offset_top = 137.0
+offset_right = 296.0
+offset_bottom = 153.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="BlueBucket2" parent="." instance=ExtResource("5_0eowe")]
 position = Vector2(81, 424)

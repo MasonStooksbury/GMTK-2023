@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgvuigmxj1r"]
 
 [ext_resource type="Script" path="res://Shared/TitleScreen/ReturnToTitle.gd" id="1_missv"]
-[ext_resource type="Texture2D" uid="uid://brvwsjvgax2uo" path="res://Assets/Us.jpg" id="2_hel46"]
+[ext_resource type="Texture2D" uid="uid://brvwsjvgax2uo" path="res://Assets/miscellaneous/Us.jpg" id="2_4f0h5"]
 [ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Shared/TitleScreen/MenuButton.tscn" id="2_u0wdh"]
 [ext_resource type="Script" path="res://Shared/TitleScreen/Button.gd" id="3_uruwt"]
 
@@ -36,7 +36,7 @@ custom_minimum_size = Vector2(75, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("2_hel46")
+texture = ExtResource("2_4f0h5")
 expand_mode = 1
 stretch_mode = 4
 

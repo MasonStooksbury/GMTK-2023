@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Game.gd" id="1_tm0ar"]
 [ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="2_kjmk8"]
 [ext_resource type="PackedScene" uid="uid://csjats1uasqe5" path="res://Player.tscn" id="3_nkcjh"]
-[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="4_00oi4"]
+[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter/ammo_meter_empty.png" id="4_00oi4"]
 [ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="5_fbcen"]
 [ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="6_4q4sq"]
 

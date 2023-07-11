@@ -1,17 +1,17 @@
 [gd_scene load_steps=12 format=3 uid="uid://cva67d22e2l5f"]
 
-[ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="1_7islc"]
-[ext_resource type="Script" path="res://Shared/Menu/Game.gd" id="1_cuerg"]
-[ext_resource type="PackedScene" uid="uid://csjats1uasqe5" path="res://Player.tscn" id="2_1rp70"]
-[ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_pnpjj"]
-[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="7_62xr5"]
-[ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="8_ontuu"]
-[ext_resource type="PackedScene" path="res://health_indicator.tscn" id="8_vuu26"]
-[ext_resource type="PackedScene" uid="uid://dgt6qkdk3cl6q" path="res://PlayerSpawn.tscn" id="8_wlfrs"]
-[ext_resource type="PackedScene" uid="uid://c1qsnqdjaxdxr" path="res://Fray.tscn" id="9_gh4ew"]
+[ext_resource type="Script" path="res://Game.gd" id="1_ikmxw"]
+[ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_os0m3"]
+[ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="3_l7fyn"]
+[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="4_ag7ka"]
+[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="5_ws6wj"]
+[ext_resource type="PackedScene" uid="uid://csjats1uasqe5" path="res://Player.tscn" id="6_rlejv"]
+[ext_resource type="PackedScene" uid="uid://c1qsnqdjaxdxr" path="res://Fray.tscn" id="7_swobw"]
+[ext_resource type="PackedScene" uid="uid://dgt6qkdk3cl6q" path="res://PlayerSpawn.tscn" id="8_2rxsc"]
+[ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="9_a4owf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
-texture = ExtResource("1_7islc")
+texture = ExtResource("3_l7fyn")
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
@@ -182,13 +182,15 @@ terrain_set_0/terrain_1/color = Color(0.501961, 0.439216, 1, 1)
 sources/5 = SubResource("TileSetAtlasSource_52ef6")
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_cuerg")
+script = ExtResource("1_ikmxw")
 
-[node name="Global" parent="." instance=ExtResource("2_pnpjj")]
+[node name="Global" parent="." instance=ExtResource("2_os0m3")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(316, 247)
+limit_smoothed = true
 position_smoothing_enabled = true
+rotation_smoothing_enabled = true
 
 [node name="TileMap" type="TileMap" parent="."]
 rotation = -0.00417535
@@ -197,29 +199,25 @@ format = 2
 layer_0/name = "ground"
 layer_0/tile_data = PackedInt32Array(327692, 65541, 0, 327687, 196613, 1, 327686, 131077, 2, 327685, 131077, 2, 327684, 131077, 3, 327683, 131077, 3, 327682, 131077, 3, 1703936, 131077, 2, 1703937, 131077, 2, 1703938, 131077, 2, 1703939, 131077, 2, 1703940, 131077, 2, 1703941, 131077, 2, 1703942, 131077, 2, 1703943, 131077, 2, 1703944, 131077, 2, 1703945, 131077, 2, 1703946, 131077, 2, 1703947, 131077, 2, 1703948, 131077, 2, 1703949, 131077, 2, 1703950, 131077, 2, 1703951, 131077, 2, 1703952, 131077, 2, 1703953, 131077, 2, 1703954, 131077, 2, 1703955, 131077, 2, 1703956, 131077, 2, 1703957, 131077, 2, 1703958, 131077, 2, 1703959, 131077, 2, 1703960, 131077, 2, 1703961, 131077, 2, 1703962, 131077, 2, 1703963, 131077, 2, 1703964, 131077, 2, 1703965, 131077, 2, 1703966, 131077, 2, 1703967, 131077, 2, 1703968, 131077, 2, 1703969, 131077, 2, 1703970, 131077, 2, 1703971, 131077, 2, 1769471, 131077, 2, 1835007, 131077, 3, 1769472, 131077, 3, 1769473, 131077, 3, 1769474, 131077, 3, 1769475, 131077, 3, 1769476, 131077, 3, 1769477, 131077, 3, 1769478, 131077, 3, 1769479, 131077, 3, 1769483, 131077, 3, 1769482, 131077, 3, 1769481, 131077, 3, 1769480, 131077, 3, 1769484, 131077, 3, 1769485, 131077, 3, 1769486, 131077, 3, 1769487, 131077, 3, 1769488, 131077, 3, 1769489, 131077, 3, 1769490, 131077, 3, 1769491, 131077, 3, 1769492, 131077, 3, 1769493, 131077, 3, 1769494, 131077, 3, 1769495, 131077, 3, 1769496, 131077, 3, 1769497, 131077, 3, 1769498, 131077, 3, 1769499, 131077, 3, 1769500, 131077, 3, 1769501, 131077, 3, 1769502, 131077, 3, 1769503, 131077, 3, 1769504, 131077, 3, 1769505, 131077, 3, 1769506, 131077, 3, 1769507, 131077, 3, 1638426, 131077, 2, 1638427, 131077, 2, 1638428, 131077, 2, 1638429, 131077, 2, 1638430, 131077, 2, 1638431, 131077, 2, 1638432, 131077, 2, 1638433, 131077, 1, 1638434, 131077, 1, 1638435, 131077, 1, 1638425, 131077, 2, 1638424, 131077, 2, 1638423, 131077, 2, 1638422, 131077, 2, 1638421, 131077, 2, 1638420, 131077, 2, 1638419, 131077, 2, 1638418, 131077, 2, 1638417, 131077, 2, 1638416, 131077, 1, 1638415, 131077, 1, 1638411, 131077, 1, 1638410, 131077, 1, 1638409, 131077, 1, 1638408, 131077, 1, 1638407, 131077, 1, 1638406, 131077, 2, 1638405, 131077, 2, 1638404, 131077, 1, 1638403, 131077, 1, 1638402, 131077, 1, 1638401, 131077, 1, 1638400, 131077, 1, 1703935, 131077, 1, 1703934, 131077, 1, 1769470, 131077, 2, 1835006, 131077, 3, 1638412, 131077, 1, 1638413, 131077, 1, 1638414, 131077, 1, 1507326, 196613, 3, 1441795, 131077, 3, 1441796, 196613, 3, 1310720, 196613, 0, 1376255, 196613, 1, 851966, 196613, 1, 917502, 196613, 2, 983038, 131077, 2, 1048574, 131077, 2, 1114110, 196613, 2, 1179646, 196613, 2, 1245182, 196613, 2, 1310718, 196613, 2, 1376254, 131077, 2, 1441790, 131077, 2, 1441791, 196613, 3, 1376260, 131077, 2, 1310724, 65541, 2, 1245188, 65541, 2, 1179652, 65541, 2, 1114116, 131077, 2, 1114115, 131077, 0, 1048580, 65541, 2, 1179653, 131077, 2, 1245189, 131077, 2, 1310725, 131077, 2, 1376261, 131077, 3, 1114117, 131077, 2, 1048581, 131077, 2, 1114118, 131077, 2, 1179654, 131077, 2, 1179655, 196613, 2, 1245191, 131077, 2, 1310727, 131077, 2, 1376263, 131077, 3, 1376262, 131077, 3, 1310726, 131077, 2, 1245190, 131077, 2, 1376264, 131077, 2, 1441801, 131077, 3, 1441802, 131077, 3, 1376266, 196613, 1, 1376265, 131077, 1, 1310728, 196613, 2, 983044, 65541, 2, 917508, 65541, 2, 851972, 65541, 1, 917509, 196613, 2, 983045, 131077, 2, 1048582, 196613, 2, 1441803, 131077, 0, 1441804, 196613, 0, 1114114, 65541, 0, 917504, 196613, 0, 917514, 65541, 1, 917515, 131077, 1, 917516, 131077, 1, 917517, 131077, 1, 917518, 131077, 1, 917519, 196613, 0, 1114128, 65541, 1, 1114129, 131077, 1, 1114130, 131077, 1, 1114131, 196613, 0, 1572883, 131077, 1, 1572884, 131077, 2, 1507348, 65541, 2, 1507349, 131077, 2, 1507350, 131077, 2, 1441814, 131077, 2, 1441815, 131077, 2, 1441816, 131077, 2, 1376280, 131077, 2, 1376281, 196613, 2, 1507351, 131077, 2, 1572886, 131077, 2, 1572885, 131077, 2, 1572887, 131077, 2, 1572888, 131077, 2, 1507352, 131077, 2, 1441817, 131077, 2, 1507353, 131077, 2, 1572889, 131077, 2, 1310744, 131077, 1, 1310745, 196613, 1, 1310743, 131077, 1, 1310742, 65541, 1, 1376278, 65541, 2, 1376279, 131077, 2, 1441813, 131077, 1, 1441812, 65541, 1, 1572882, 131077, 1, 1572881, 65541, 1, 1441818, 131077, 1, 1441819, 196613, 1, 1507356, 131077, 1, 1507357, 196613, 1, 1572893, 131077, 2, 1572892, 131077, 2, 1572891, 131077, 2, 1507355, 131077, 2, 1507354, 131077, 2, 1572890, 131077, 2, 1572894, 131077, 1, 1572895, 131077, 1, 1572896, 196613, 1, 589839, 65541, 3, 524303, 65541, 1, 524304, 131077, 1, 524305, 131077, 1, 524306, 131077, 2, 458770, 65541, 1, 458771, 131077, 1, 458772, 196613, 1, 524308, 131077, 2, 524309, 196613, 1, 524307, 131077, 2, 589842, 131077, 3, 589841, 131077, 3, 589840, 131077, 3, 589843, 131077, 3, 589844, 131077, 3, 589845, 196613, 3, 720904, 131077, 0, 720903, 65541, 0, 720905, 196613, 0, 589835, 65541, 0, 589836, 196613, 0, 196636, 65541, 0, 196637, 131077, 1, 196638, 131077, 1, 196639, 131077, 1, 196640, 131077, 1, 196641, 196613, 1, 262173, 65541, 3, 262174, 131077, 2, 262175, 131077, 2, 262176, 131077, 2, 327703, 65541, 0, 327704, 131077, 0, 327705, 196613, 0, 262146, 131077, 1, 262147, 131077, 1, 262148, 131077, 1, 262149, 131077, 1, 262150, 196613, 1, 589821, 196613, 0, 589820, 131077, 3, 655395, 196613, 1, 655394, 131077, 1, 655393, 65541, 0, 852000, 196613, 1, 851999, 131077, 1, 851998, 131077, 1, 851997, 65541, 1, 917533, 65541, 2, 983069, 131077, 2, 983068, 131077, 1, 983067, 65541, 1, 1048602, 65541, 0, 1048603, 131077, 3, 1048604, 131077, 3, 1048605, 131077, 3, 1048606, 131077, 3, 983070, 131077, 2, 917534, 131077, 2, 917535, 131077, 2, 983071, 131077, 2, 1048607, 131077, 3, 983072, 131077, 2, 917536, 196613, 2, 1048608, 196613, 3, 983073, 131077, 0, 983074, 196613, 0, 1310752, 65541, 0, 1310753, 131077, 0, 1310754, 131077, 3, 1310755, 131077, 2, 1245219, 131077, 2, 1179683, 65541, 1, 1179684, 131077, 1, 655385, 65541, 1, 655386, 131077, 1, 655387, 196613, 0, 851988, 65541, 0, 851989, 131077, 1, 851990, 131077, 1, 851991, 196613, 0, 262145, 65541, 1, 327681, 131077, 3, 983051, 131077, 3, 983052, 131077, 3, 983053, 131077, 3, 983054, 196613, 3, 262177, 196613, 2, 983050, 65541, 3, 1441800, 65541, 3, 983039, 131077, 1, 1507325, 65541, 3, 1441789, 65541, 2, 1376253, 65541, 2, 1310717, 65541, 2, 1245181, 65541, 2, 1179645, 65541, 2, 1114109, 65541, 2, 1048573, 65541, 2, 983037, 65541, 2, 917501, 65541, 2, 851965, 65541, 1, 851973, 196613, 1, 983046, 196613, 1, 1114119, 196613, 1, 1245192, 196613, 1, 917526, 196613, 3, 917525, 65541, 3, 720921, 65541, 3, 720922, 196613, 3, 720930, 65541, 3, 720931, 196613, 3, 327710, 65541, 3, 327711, 131077, 3, 327712, 131077, 2, 327713, 196613, 2, 393221, 65541, 3, 393222, 131077, 2, 393223, 196613, 2, 458759, 196613, 3, 458760, 196613, 0, 196624, 65541, 0, 196625, 131077, 0, 196626, 196613, 0, 1179665, 131077, 2, 1179664, 65541, 2, 1245200, 65541, 3, 1245201, 196613, 3, 1179666, 196613, 3, 327693, 196613, 0, 1441794, 65541, 0, 655361, 65541, 0, 655362, 131077, 0, 589819, 131077, 3, 1376259, 65541, 1, 1048575, 196613, 3, 851971, 65541, 0, 327680, 65541, 0, 1572869, 65541, 1, 1572870, 196613, 1, 458758, 65541, 3, 655363, 196613, 0, 1835004, 131077, 3, 1835005, 131077, 3, 1769469, 131077, 2, 1703933, 131077, 1, 1703932, 131077, 1, 1769468, 131077, 2, 524284, 196613, 1, 524283, 131077, 1, 65572, 5, 1, 131108, 65541, 2, 196644, 65541, 2, 262180, 65541, 2, 262181, 196613, 2, 196645, 196613, 2, 131109, 196613, 1, 458746, 196613, 2, 524282, 131077, 2, 589818, 131077, 3, 393210, 196613, 1, 393209, 65541, 1, 458745, 65541, 2, 524281, 65541, 2, 589817, 65541, 3, 1179685, 196613, 1, 1835003, 131077, 3, 1769467, 131077, 2, 1703931, 131077, 1, 1703930, 131077, 2, 1769466, 131077, 2, 1835002, 131077, 3, 1638394, 196613, 2, 1572858, 196613, 2, 1507322, 196613, 2, 1441786, 196613, 2, 1376250, 196613, 2, 1310714, 196613, 2, 1245178, 196613, 2, 1179642, 196613, 2, 1114106, 196613, 2, 1048570, 196613, 2, 983034, 196613, 2, 917498, 196613, 1, 917497, 65541, 1, 983033, 65541, 2, 1048569, 65541, 2, 1114105, 65541, 2, 1179641, 65541, 2, 1245177, 65541, 2, 1310713, 65541, 2, 1376249, 65541, 2, 1441785, 65541, 2, 1507321, 65541, 2, 1572857, 65541, 2, 1638393, 65541, 2, 1703929, 65541, 2, 1769465, 65541, 2, 1835001, 65541, 3, 1507368, 65541, 2, 1441832, 65541, 2, 1376296, 65541, 2, 1310760, 65541, 1, 1572904, 65541, 3, 1310761, 196613, 1, 1376297, 196613, 2, 1441833, 196613, 2, 1507369, 196613, 2, 1572905, 196613, 3, 327716, 65541, 2, 327717, 196613, 2, 720885, 65541, 2, 720886, 196613, 2, 655350, 196613, 2, 655349, 65541, 2, 589813, 65541, 2, 589814, 196613, 2, 524278, 196613, 1, 524277, 65541, 1, 1245218, 65541, 1, 1638436, 131077, 1, 1703972, 131077, 2, 1769508, 131077, 3, 1245220, 131077, 2, 1245221, 196613, 2, 1310756, 131077, 2, 1310757, 196613, 2, 1376293, 196613, 3, 1376292, 131077, 3, 1376291, 65541, 3, 1638437, 196613, 1, 1703973, 196613, 2, 1769509, 196613, 3, 786421, 65541, 3, 786422, 196613, 3, 393248, 65541, 3, 393249, 196613, 3, 393252, 65541, 2, 393253, 196613, 2, 458788, 65541, 3, 458789, 196613, 3)
 
-[node name="Player" parent="." instance=ExtResource("2_1rp70")]
-position = Vector2(113, 60)
-player_num = "p1"
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="p1Ammo" type="TextureRect" parent="CanvasLayer"]
+[node name="p1Ammo" type="TextureRect" parent="HUD"]
 offset_left = 4.0
 offset_top = 134.0
 offset_right = 24.0
 offset_bottom = 154.0
-texture = ExtResource("7_62xr5")
+texture = ExtResource("4_ag7ka")
 metadata/_edit_use_anchors_ = true
 
-[node name="p2Ammo" type="TextureRect" parent="CanvasLayer"]
+[node name="p2Ammo" type="TextureRect" parent="HUD"]
 offset_left = 294.0
 offset_top = 135.0
 offset_right = 314.0
 offset_bottom = 155.0
-texture = ExtResource("7_62xr5")
+texture = ExtResource("4_ag7ka")
 metadata/_edit_use_anchors_ = true
 
-[node name="p1HealthIndicator" parent="CanvasLayer" instance=ExtResource("8_vuu26")]
+[node name="p1HealthIndicator" parent="HUD" instance=ExtResource("5_ws6wj")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -230,7 +228,7 @@ offset_bottom = 152.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="p2HealthIndicator" parent="CanvasLayer" instance=ExtResource("8_vuu26")]
+[node name="p2HealthIndicator" parent="HUD" instance=ExtResource("5_ws6wj")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -241,77 +239,83 @@ offset_bottom = 153.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="GenericBucket" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(114, 420)
-color = "BLUE"
+[node name="Player" parent="." instance=ExtResource("6_rlejv")]
+position = Vector2(113, 60)
+player_num = "p1"
 
-[node name="GenericBucket6" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(-71, 319)
-color = "RED"
-
-[node name="GenericBucket7" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(70, 62)
-color = "RED"
-
-[node name="GenericBucket8" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(316, 42)
-color = "YELLOW"
-
-[node name="GenericBucket9" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(558, 41)
-color = "BLUE"
-
-[node name="GenericBucket10" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(664, 434)
-color = "RED"
-
-[node name="GenericBucket11" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(659, 312)
-color = "RED"
-
-[node name="GenericBucket12" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(-107, 78)
-color = "YELLOW"
-
-[node name="GenericBucket2" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(0, 242)
-color = "BLUE"
-
-[node name="GenericBucket3" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(230, 239)
-color = "YELLOW"
-
-[node name="GenericBucket4" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(47, 166)
-color = "BLUE"
-
-[node name="GenericBucket5" parent="." instance=ExtResource("8_ontuu")]
-position = Vector2(377, 222)
-color = "REDBLUE"
-
-[node name="Player2" parent="." instance=ExtResource("2_1rp70")]
+[node name="Player2" parent="." instance=ExtResource("6_rlejv")]
 position = Vector2(443, 343)
 player_num = "p2"
 
-[node name="Fray" parent="." instance=ExtResource("9_gh4ew")]
+[node name="Fray" parent="." instance=ExtResource("7_swobw")]
 position = Vector2(-303, 536)
 
 [node name="PlayerSpawnOptions" type="Node2D" parent="."]
 
-[node name="PlayerSpawn1" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn1" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(72, 56)
 
-[node name="PlayerSpawn2" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn2" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(-3, 343)
 
-[node name="PlayerSpawn3" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn3" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(-74, 112)
 
-[node name="PlayerSpawn4" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn4" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(567, 215)
 
-[node name="PlayerSpawn5" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn5" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(316, 40)
 
-[node name="PlayerSpawn6" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn6" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(241, 238)
+
+[node name="Buckets" type="Node2D" parent="."]
+
+[node name="GenericBucket" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(114, 420)
+color = "BLUE"
+
+[node name="GenericBucket6" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(-71, 319)
+color = "RED"
+
+[node name="GenericBucket7" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(70, 62)
+color = "RED"
+
+[node name="GenericBucket8" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(316, 42)
+color = "YELLOW"
+
+[node name="GenericBucket9" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(558, 41)
+color = "BLUE"
+
+[node name="GenericBucket10" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(664, 434)
+color = "RED"
+
+[node name="GenericBucket11" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(659, 312)
+color = "RED"
+
+[node name="GenericBucket12" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(-107, 78)
+color = "YELLOW"
+
+[node name="GenericBucket2" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(0, 242)
+color = "BLUE"
+
+[node name="GenericBucket3" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(230, 239)
+color = "YELLOW"
+
+[node name="GenericBucket4" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(47, 166)
+color = "BLUE"
+
+[node name="GenericBucket5" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(377, 222)
+color = "REDBLUE"

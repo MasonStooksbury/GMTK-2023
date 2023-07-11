@@ -28,8 +28,8 @@ const controls = {
 }
 
 const sprites = {
-	'p1': 'res://Assets/boi2.png',
-	'p2': 'res://Assets/purp_boi2.png'
+	'p1': 'res://Assets/player/boi2.png',
+	'p2': 'res://Assets/player/purp_boi2.png'
 }
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

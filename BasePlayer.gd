@@ -104,7 +104,7 @@ func fell_in_fray():
 	if health == 0:
 		is_dead = true
 		return 
-	get_parent().get_node('CanvasLayer/%sHealthIndicator' % player_num).display_health(health)
+	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 	var player_spawn_array = get_parent().get_node('PlayerSpawnOptions').get_children()
 	var random_spawn = player_spawn_array[randi() % player_spawn_array.size()]
 	global_transform.origin = random_spawn.global_transform.origin
@@ -150,7 +150,7 @@ func process_hit(color: String):
 	if health == 0:
 		is_dead = true
 		return
-	get_parent().get_node('CanvasLayer/%sHealthIndicator' % player_num).display_health(health)
+	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 
 func spawn_bucket(position, color):
 	var b = GENERIC_BUCKET.instantiate()
@@ -163,7 +163,7 @@ func spawn_bucket(position, color):
 	pass
 	
 func change_hud(new_texture):
-	get_parent().get_node('CanvasLayer/%sAmmo' % player_num).texture = new_texture
+	get_parent().get_node('HUD/%sAmmo' % player_num).texture = new_texture
 	
 func empty_ammo():
 	ammo = ''

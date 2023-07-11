@@ -1,7 +1,11 @@
 extends Node2D
 
-var zoom_max = 0.5
-var zoom_min = 0.7
+#var zoom_max = 0.5
+#var zoom_min = 0.7
+#var distance_min = 10
+#var distance_max = 600
+
+var zoom_max = 3
 var distance_min = 10
 var distance_max = 600
 
@@ -17,11 +21,15 @@ func _process(delta):
 
 
 func handle_zoom(distance):
+	# Approaches 1 the further you get from each other
+	# Approaches 0 the closer you get
 	var zoom_percent = distance / (distance_max - distance_min)
-	zoom_percent = zoom_min if zoom_percent > zoom_min else zoom_percent
-	zoom_percent = zoom_max if zoom_percent < zoom_max else zoom_percent
+
+	var zoom_num = zoom_max / 1.25 - zoom_percent
+
 	
-	$Camera2D.zoom = Vector2(1-zoom_percent, 1-zoom_percent)
+	
+	$Camera2D.zoom = Vector2(zoom_num, zoom_num)
 	
 func player_health_check():
 	if $Player.is_dead or $Player2.is_dead:

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://5ru16f7ig26u"]
+[gd_scene load_steps=6 format=3 uid="uid://5ru16f7ig26u"]
 
 [ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Shared/TitleScreen/Outrun future.otf" id="1_uyj1c"]
 [ext_resource type="Script" path="res://Shared/EndScreen.gd" id="1_ydja3"]
-[ext_resource type="PackedScene" uid="uid://blhcm5ue814y0" path="res://Shared/TitleScreen/MainMenuButton.tscn" id="3_f40hw"]
 [ext_resource type="PackedScene" uid="uid://7vh61i6cu184" path="res://Shared/TitleScreen/TitleScreen.tscn" id="5_3vhpa"]
+[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Shared/TitleScreen/MenuButton.tscn" id="5_eml5b"]
+[ext_resource type="Script" path="res://Shared/TitleScreen/Button.gd" id="6_ifr8b"]
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -41,10 +42,10 @@ theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[wave amp=20 freq=6]          VICTORY!"
 
-[node name="MainMenuButton" parent="MarginContainer/Menu" instance=ExtResource("3_f40hw")]
+[node name="MenuButton" parent="MarginContainer/Menu" instance=ExtResource("5_eml5b")]
 layout_mode = 2
-size_flags_horizontal = 4
-flat = false
+text = "Main Menu"
+script = ExtResource("6_ifr8b")
 next_scene = ExtResource("5_3vhpa")
 
-[connection signal="pressed" from="MarginContainer/Menu/MainMenuButton" to="MarginContainer/Menu/MainMenuButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/MenuButton" to="MarginContainer/Menu/MenuButton" method="_on_pressed"]

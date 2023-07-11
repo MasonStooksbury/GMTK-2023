@@ -1,17 +1,17 @@
 [gd_scene load_steps=12 format=3 uid="uid://cva67d22e2l5f"]
 
-[ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="1_7islc"]
-[ext_resource type="Script" path="res://Shared/Menu/Game.gd" id="1_cuerg"]
-[ext_resource type="PackedScene" uid="uid://csjats1uasqe5" path="res://Player.tscn" id="2_1rp70"]
-[ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_pnpjj"]
-[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="7_62xr5"]
-[ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="8_ontuu"]
-[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="8_vuu26"]
-[ext_resource type="PackedScene" uid="uid://dgt6qkdk3cl6q" path="res://PlayerSpawn.tscn" id="8_wlfrs"]
-[ext_resource type="PackedScene" uid="uid://c1qsnqdjaxdxr" path="res://Fray.tscn" id="9_gh4ew"]
+[ext_resource type="Script" path="res://Game.gd" id="1_ikmxw"]
+[ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="2_os0m3"]
+[ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="3_l7fyn"]
+[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter_empty.png" id="4_ag7ka"]
+[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="5_ws6wj"]
+[ext_resource type="PackedScene" uid="uid://csjats1uasqe5" path="res://Player.tscn" id="6_rlejv"]
+[ext_resource type="PackedScene" uid="uid://c1qsnqdjaxdxr" path="res://Fray.tscn" id="7_swobw"]
+[ext_resource type="PackedScene" uid="uid://dgt6qkdk3cl6q" path="res://PlayerSpawn.tscn" id="8_2rxsc"]
+[ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="9_a4owf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
-texture = ExtResource("1_7islc")
+texture = ExtResource("3_l7fyn")
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
@@ -182,13 +182,12 @@ terrain_set_0/terrain_1/color = Color(0.501961, 0.439216, 1, 1)
 sources/5 = SubResource("TileSetAtlasSource_52ef6")
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_cuerg")
+script = ExtResource("1_ikmxw")
 
-[node name="Global" parent="." instance=ExtResource("2_pnpjj")]
+[node name="Global" parent="." instance=ExtResource("2_os0m3")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(316, 247)
-zoom = Vector2(3, 3)
 limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
@@ -207,7 +206,7 @@ offset_left = 4.0
 offset_top = 134.0
 offset_right = 24.0
 offset_bottom = 154.0
-texture = ExtResource("7_62xr5")
+texture = ExtResource("4_ag7ka")
 metadata/_edit_use_anchors_ = true
 
 [node name="p2Ammo" type="TextureRect" parent="HUD"]
@@ -215,10 +214,10 @@ offset_left = 294.0
 offset_top = 135.0
 offset_right = 314.0
 offset_bottom = 155.0
-texture = ExtResource("7_62xr5")
+texture = ExtResource("4_ag7ka")
 metadata/_edit_use_anchors_ = true
 
-[node name="p1HealthIndicator" parent="HUD" instance=ExtResource("8_vuu26")]
+[node name="p1HealthIndicator" parent="HUD" instance=ExtResource("5_ws6wj")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -229,7 +228,7 @@ offset_bottom = 152.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="p2HealthIndicator" parent="HUD" instance=ExtResource("8_vuu26")]
+[node name="p2HealthIndicator" parent="HUD" instance=ExtResource("5_ws6wj")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -240,83 +239,83 @@ offset_bottom = 153.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Player" parent="." instance=ExtResource("2_1rp70")]
+[node name="Player" parent="." instance=ExtResource("6_rlejv")]
 position = Vector2(113, 60)
 player_num = "p1"
 
-[node name="Player2" parent="." instance=ExtResource("2_1rp70")]
+[node name="Player2" parent="." instance=ExtResource("6_rlejv")]
 position = Vector2(443, 343)
 player_num = "p2"
 
-[node name="Fray" parent="." instance=ExtResource("9_gh4ew")]
+[node name="Fray" parent="." instance=ExtResource("7_swobw")]
 position = Vector2(-303, 536)
 
 [node name="PlayerSpawnOptions" type="Node2D" parent="."]
 
-[node name="PlayerSpawn1" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn1" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(72, 56)
 
-[node name="PlayerSpawn2" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn2" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(-3, 343)
 
-[node name="PlayerSpawn3" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn3" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(-74, 112)
 
-[node name="PlayerSpawn4" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn4" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(567, 215)
 
-[node name="PlayerSpawn5" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn5" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(316, 40)
 
-[node name="PlayerSpawn6" parent="PlayerSpawnOptions" instance=ExtResource("8_wlfrs")]
+[node name="PlayerSpawn6" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(241, 238)
 
 [node name="Buckets" type="Node2D" parent="."]
 
-[node name="GenericBucket" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(114, 420)
 color = "BLUE"
 
-[node name="GenericBucket6" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket6" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(-71, 319)
 color = "RED"
 
-[node name="GenericBucket7" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket7" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(70, 62)
 color = "RED"
 
-[node name="GenericBucket8" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket8" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(316, 42)
 color = "YELLOW"
 
-[node name="GenericBucket9" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket9" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(558, 41)
 color = "BLUE"
 
-[node name="GenericBucket10" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket10" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(664, 434)
 color = "RED"
 
-[node name="GenericBucket11" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket11" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(659, 312)
 color = "RED"
 
-[node name="GenericBucket12" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket12" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(-107, 78)
 color = "YELLOW"
 
-[node name="GenericBucket2" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket2" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(0, 242)
 color = "BLUE"
 
-[node name="GenericBucket3" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket3" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(230, 239)
 color = "YELLOW"
 
-[node name="GenericBucket4" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket4" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(47, 166)
 color = "BLUE"
 
-[node name="GenericBucket5" parent="Buckets" instance=ExtResource("8_ontuu")]
+[node name="GenericBucket5" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(377, 222)
 color = "REDBLUE"

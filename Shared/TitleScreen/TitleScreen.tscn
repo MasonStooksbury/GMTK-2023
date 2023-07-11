@@ -1,26 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://7vh61i6cu184"]
+[gd_scene load_steps=7 format=3 uid="uid://7vh61i6cu184"]
 
 [ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Shared/TitleScreen/Outrun future.otf" id="2_uacsf"]
-[ext_resource type="PackedScene" uid="uid://7ul6g2a0s5l8" path="res://Shared/TitleScreen/SettingsButton.tscn" id="3"]
-[ext_resource type="PackedScene" uid="uid://dbwp1lhpowj1v" path="res://Shared/TitleScreen/CreditsButton.tscn" id="4"]
-[ext_resource type="FontFile" uid="uid://dpw7v4rm1ofwh" path="res://Shared/TitleScreen/Cyberthrone-7nP4.ttf" id="4_qyi8o"]
-[ext_resource type="PackedScene" uid="uid://br55ew0i4r1sg" path="res://Shared/TitleScreen/HowToButton.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://cva67d22e2l5f" path="res://Shared/Menu/Game.tscn" id="5_vli87"]
-[ext_resource type="PackedScene" uid="uid://ba21rpgciikux" path="res://Shared/TitleScreen/NewGameButton.tscn" id="6"]
-[ext_resource type="Script" path="res://Shared/TitleScreen/TitleScreen.gd" id="7"]
+[ext_resource type="PackedScene" uid="uid://cva67d22e2l5f" path="res://Game.tscn" id="5_vli87"]
 [ext_resource type="PackedScene" uid="uid://d25xmwdja50qg" path="res://how_to.tscn" id="7_hwuth"]
-[ext_resource type="PackedScene" uid="uid://cgnyubn3avbi7" path="res://Shared/Menu/SettingsScreen.tscn" id="7_p5it3"]
+[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Shared/TitleScreen/MenuButton.tscn" id="10_085aj"]
 [ext_resource type="PackedScene" uid="uid://bgvuigmxj1r" path="res://Shared/TitleScreen/CreditsScreen.tscn" id="10_f0v7l"]
+[ext_resource type="Script" path="res://Shared/TitleScreen/Button.gd" id="11_4gkel"]
 
 [node name="TitleScreen" type="Control"]
-custom_minimum_size = Vector2(480, 240)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("7")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(440, 200)
@@ -49,44 +42,30 @@ theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[wave amp=20 freq=6]       Swatch Bots"
 
-[node name="CenterRow" type="HBoxContainer" parent="MarginContainer/Menu"]
-layout_mode = 2
-
-[node name="Buttons" type="VBoxContainer" parent="MarginContainer/Menu/CenterRow"]
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/Menu"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 3
 theme_override_constants/separation = 5
 
-[node name="NewGameButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("6")]
-custom_minimum_size = Vector2(60, 10)
+[node name="NewGameButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("10_085aj")]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("4_qyi8o")
-theme_override_font_sizes/font_size = 10
+text = "New Game"
+script = ExtResource("11_4gkel")
 next_scene = ExtResource("5_vli87")
 
-[node name="HowToButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("5")]
-custom_minimum_size = Vector2(60, 10)
+[node name="HowToButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("10_085aj")]
 layout_mode = 2
+text = "How To Play"
+script = ExtResource("11_4gkel")
 next_scene = ExtResource("7_hwuth")
 
-[node name="SettingsButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("3")]
-visible = false
-custom_minimum_size = Vector2(60, 10)
+[node name="CreditsButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("10_085aj")]
 layout_mode = 2
-next_scene = ExtResource("7_p5it3")
-
-[node name="CreditsButton" parent="MarginContainer/Menu/CenterRow/Buttons" instance=ExtResource("4")]
-custom_minimum_size = Vector2(60, 10)
-layout_mode = 2
+text = "Credits"
+script = ExtResource("11_4gkel")
 next_scene = ExtResource("10_f0v7l")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Menu/CenterRow"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/NewGameButton" to="MarginContainer/Menu/CenterRow/Buttons/NewGameButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/HowToButton" to="MarginContainer/Menu/CenterRow/Buttons/HowToButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/SettingsButton" to="MarginContainer/Menu/CenterRow/Buttons/SettingsButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/Menu/CenterRow/Buttons/CreditsButton" to="MarginContainer/Menu/CenterRow/Buttons/CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/Buttons/NewGameButton" to="MarginContainer/Menu/Buttons/NewGameButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/Buttons/HowToButton" to="MarginContainer/Menu/Buttons/HowToButton" method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/Buttons/CreditsButton" to="MarginContainer/Menu/Buttons/CreditsButton" method="_on_pressed"]

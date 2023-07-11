@@ -1,6 +1,10 @@
 extends Node
 
-var test = 'test'
+# SCENES
+const BULLET_SCENE = preload('res://Bullet.tscn')
+const GENERIC_BUCKET_SCENE = preload('res://GenericBucket.tscn')
+const TITLESCREEN_SCENE = preload('res://Shared/TitleScreen/TitleScreen.tscn')
+const ENDSCREEN_SCENE = preload('res://Shared/EndScreen.tscn')
 
 var empty:CompressedTexture2D = load("res://Assets/ammo_meter_empty.png")
 var half_blue:CompressedTexture2D = load("res://Assets/ammo_meter_half_blue.png")
@@ -78,13 +82,3 @@ var bucket_textures = {
 var primary_colors = ['RED', 'BLUE', 'YELLOW']
 var complex_colors = ["BLUEBLUE", "BLUERED", "BLUEYELLOW", "REDRED", "REDBLUE", "REDYELLOW", "YELLOWYELLOW", "YELLOWRED", "YELLOWBLUE"]
 var deduped_complex_colors = ["BLUEBLUE", "REDRED", "YELLOWYELLOW", "REDBLUE", "REDYELLOW", "YELLOWBLUE"]
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-

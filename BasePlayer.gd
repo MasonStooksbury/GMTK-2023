@@ -35,8 +35,6 @@ const sprites = {
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const BULLET_VELOCITY = 650
-const bullet = preload('res://bullet.tscn')
-const GENERIC_BUCKET = preload('res://GenericBucket.tscn')
 
 var _velocity = Vector2()
 var player_color: String
@@ -53,7 +51,7 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed('quit'):
-		get_tree().change_scene_to_file('res://Shared/TitleScreen/TitleScreen.tscn')
+		get_tree().change_scene_to_packed(Global.TITLESCREEN_SCENE)
 	# Add the gravity.
 	if not is_on_floor():
 		_velocity.y += gravity * delta
@@ -133,7 +131,7 @@ func can_fire():
 	
 func fire_projectile(color: String):
 	if can_fire():
-		var b = bullet.instantiate()
+		var b = Global.BULLET_SCENE.instantiate()
 		b.setup(player_color, color)
 		b.position = global_transform.origin + Vector2(0, -3.0)
 		b.apply_impulse((Vector2.LEFT if $Sprite2D.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
@@ -153,11 +151,11 @@ func process_hit(color: String):
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 
 func spawn_bucket(position, color):
-	var b = GENERIC_BUCKET.instantiate()
+	var b = Global.GENERIC_BUCKET_SCENE.instantiate()
 	b.color = color
 	b.position = global_transform.origin
 	b.get_node('SpawnTimer').wait_time = 2
-	b.get_node('Timer').autostart = false
+	b.get_node('ColorChangeTimer').autostart = false
 	b.dropped = true
 	get_parent().add_child(b)
 	pass

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://7vh61i6cu184"]
 
-[ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Shared/TitleScreen/Outrun future.otf" id="2_uacsf"]
-[ext_resource type="PackedScene" uid="uid://cva67d22e2l5f" path="res://Game.tscn" id="5_vli87"]
-[ext_resource type="PackedScene" uid="uid://d25xmwdja50qg" path="res://how_to.tscn" id="7_hwuth"]
-[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Shared/TitleScreen/MenuButton.tscn" id="10_085aj"]
-[ext_resource type="PackedScene" uid="uid://bgvuigmxj1r" path="res://Shared/TitleScreen/CreditsScreen.tscn" id="10_f0v7l"]
-[ext_resource type="Script" path="res://Shared/TitleScreen/Button.gd" id="11_4gkel"]
+[ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Screens/Outrun future.otf" id="1_c8522"]
+[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Screens/MenuButton.tscn" id="2_2owdg"]
+[ext_resource type="Script" path="res://Screens/Button.gd" id="3_mrsd3"]
+[ext_resource type="PackedScene" uid="uid://cva67d22e2l5f" path="res://Game.tscn" id="4_8lihn"]
+[ext_resource type="PackedScene" uid="uid://d25xmwdja50qg" path="res://HowToWorld.tscn" id="5_bhudg"]
+[ext_resource type="PackedScene" uid="uid://bgvuigmxj1r" path="res://Screens/CreditsScreen.tscn" id="6_smyrc"]
 
 [node name="TitleScreen" type="Control"]
 layout_mode = 3
@@ -37,7 +37,7 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Menu"]
 custom_minimum_size = Vector2(440, 75)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_uacsf")
+theme_override_fonts/normal_font = ExtResource("1_c8522")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[wave amp=20 freq=6]       Swatch Bots"
@@ -48,23 +48,23 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 theme_override_constants/separation = 5
 
-[node name="NewGameButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("10_085aj")]
+[node name="NewGameButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("2_2owdg")]
 layout_mode = 2
 text = "New Game"
-script = ExtResource("11_4gkel")
-next_scene = ExtResource("5_vli87")
+script = ExtResource("3_mrsd3")
+next_scene = ExtResource("4_8lihn")
 
-[node name="HowToButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("10_085aj")]
+[node name="HowToButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("2_2owdg")]
 layout_mode = 2
 text = "How To Play"
-script = ExtResource("11_4gkel")
-next_scene = ExtResource("7_hwuth")
+script = ExtResource("3_mrsd3")
+next_scene = ExtResource("5_bhudg")
 
-[node name="CreditsButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("10_085aj")]
+[node name="CreditsButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("2_2owdg")]
 layout_mode = 2
 text = "Credits"
-script = ExtResource("11_4gkel")
-next_scene = ExtResource("10_f0v7l")
+script = ExtResource("3_mrsd3")
+next_scene = ExtResource("6_smyrc")
 
 [connection signal="pressed" from="MarginContainer/Menu/Buttons/NewGameButton" to="MarginContainer/Menu/Buttons/NewGameButton" method="_on_pressed"]
 [connection signal="pressed" from="MarginContainer/Menu/Buttons/HowToButton" to="MarginContainer/Menu/Buttons/HowToButton" method="_on_pressed"]

@@ -9,7 +9,7 @@ var distance_max = 600
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	player_health_check()
 	var midpoint = ($Player.global_transform.origin + $Player2.global_transform.origin)/2
 	var distance = ($Player.global_transform.origin).distance_to($Player2.global_transform.origin)

@@ -10,6 +10,8 @@ var dropped = false
 var small_waittime = 10
 var big_waittime = 20
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	is_primary = false if color in Global.complex_colors else true
@@ -20,12 +22,7 @@ func _ready():
 	get_node('Sprite2D').texture = Global.bucket_textures[color]
 	if not is_primary:
 		scale = Vector2(scale_factor, scale_factor)
-	
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 
 func _on_body_entered(body):
@@ -38,23 +35,22 @@ func _on_body_entered(body):
 			$RespawnTimer.start()
 		else:
 			queue_free()
-		
 
 
 
 func _on_spawn_timer_ready():
 	set_deferred('monitoring', false)
-	
 func _on_spawn_timer_timeout():
 	set_deferred('monitoring', true)
 
 
 
-func _on_timer_timeout():
+func _on_color_change_timer_timeout():
 	current_color += 1
 	current_color = 0 if current_color > cycle_max else current_color
 	color = color_cycle[current_color]
 	get_node('Sprite2D').texture = Global.bucket_textures[color]
+
 
 
 func _on_respawn_timer_timeout():

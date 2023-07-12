@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://HealthIndicator.tscn" id="2_6qydv"]
 
 [node name="HUD" type="CanvasLayer"]
+offset = Vector2(0, 80)
+scale = Vector2(4, 4)
+transform = Transform2D(4, 0, 0, 4, 0, 80)
 
 [node name="Player1Ammo" type="TextureRect" parent="."]
 offset_left = 4.0

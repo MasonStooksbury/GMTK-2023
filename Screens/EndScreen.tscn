@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://5ru16f7ig26u"]
+[gd_scene load_steps=5 format=3 uid="uid://5ru16f7ig26u"]
 
-[ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Shared/TitleScreen/Outrun future.otf" id="1_uyj1c"]
-[ext_resource type="Script" path="res://Shared/EndScreen.gd" id="1_ydja3"]
-[ext_resource type="PackedScene" uid="uid://7vh61i6cu184" path="res://Shared/TitleScreen/TitleScreen.tscn" id="5_3vhpa"]
-[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Shared/TitleScreen/MenuButton.tscn" id="5_eml5b"]
-[ext_resource type="Script" path="res://Shared/TitleScreen/Button.gd" id="6_ifr8b"]
+[ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Screens/Outrun future.otf" id="1_q0u8e"]
+[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Screens/MenuButton.tscn" id="2_jm4yb"]
+[ext_resource type="Script" path="res://Screens/Button.gd" id="3_d8fk3"]
+[ext_resource type="PackedScene" uid="uid://7vh61i6cu184" path="res://Screens/TitleScreen.tscn" id="4_1iin1"]
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -13,7 +12,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ydja3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(440, 200)
@@ -37,15 +35,15 @@ alignment = 1
 [node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/Menu"]
 custom_minimum_size = Vector2(440, 75)
 layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("1_uyj1c")
+theme_override_fonts/normal_font = ExtResource("1_q0u8e")
 theme_override_font_sizes/normal_font_size = 40
 bbcode_enabled = true
 text = "[wave amp=20 freq=6]          VICTORY!"
 
-[node name="MenuButton" parent="MarginContainer/Menu" instance=ExtResource("5_eml5b")]
+[node name="MenuButton" parent="MarginContainer/Menu" instance=ExtResource("2_jm4yb")]
 layout_mode = 2
 text = "Main Menu"
-script = ExtResource("6_ifr8b")
-next_scene = ExtResource("5_3vhpa")
+script = ExtResource("3_d8fk3")
+next_scene = ExtResource("4_1iin1")
 
 [connection signal="pressed" from="MarginContainer/Menu/MenuButton" to="MarginContainer/Menu/MenuButton" method="_on_pressed"]

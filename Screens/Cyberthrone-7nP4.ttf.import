@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://dpw7v4rm1ofwh"
-path="res://.godot/imported/Cyberthrone-7nP4.ttf-ee5fd03855df39bf55e7239001998890.fontdata"
+path="res://.godot/imported/Cyberthrone-7nP4.ttf-b075f4dfde3680fe2c90ad17bcb9f145.fontdata"
 
 [deps]
 
-source_file="res://Shared/TitleScreen/Cyberthrone-7nP4.ttf"
-dest_files=["res://.godot/imported/Cyberthrone-7nP4.ttf-ee5fd03855df39bf55e7239001998890.fontdata"]
+source_file="res://Screens/Cyberthrone-7nP4.ttf"
+dest_files=["res://.godot/imported/Cyberthrone-7nP4.ttf-b075f4dfde3680fe2c90ad17bcb9f145.fontdata"]
 
 [params]
 

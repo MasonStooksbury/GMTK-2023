@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bsek567kn2ciy"
-path="res://.godot/imported/Outrun future.otf-4cf2c00908e6d8b5632dd2998bef4ff6.fontdata"
+path="res://.godot/imported/Outrun future.otf-a4ba4e167f43644afebbe8398b9778ed.fontdata"
 
 [deps]
 
-source_file="res://Shared/TitleScreen/Outrun future.otf"
-dest_files=["res://.godot/imported/Outrun future.otf-4cf2c00908e6d8b5632dd2998bef4ff6.fontdata"]
+source_file="res://Screens/Outrun future.otf"
+dest_files=["res://.godot/imported/Outrun future.otf-a4ba4e167f43644afebbe8398b9778ed.fontdata"]
 
 [params]
 

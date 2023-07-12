@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgvuigmxj1r"]
 
-[ext_resource type="Script" path="res://Shared/TitleScreen/ReturnToTitle.gd" id="1_missv"]
-[ext_resource type="Texture2D" uid="uid://brvwsjvgax2uo" path="res://Assets/miscellaneous/Us.jpg" id="2_4f0h5"]
-[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Shared/TitleScreen/MenuButton.tscn" id="2_u0wdh"]
-[ext_resource type="Script" path="res://Shared/TitleScreen/Button.gd" id="3_uruwt"]
+[ext_resource type="Script" path="res://Screens/ReturnToTitle.gd" id="1_alxfn"]
+[ext_resource type="Texture2D" uid="uid://brvwsjvgax2uo" path="res://Assets/miscellaneous/Us.jpg" id="2_ap4j4"]
+[ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Screens/MenuButton.tscn" id="3_x2uvb"]
+[ext_resource type="Script" path="res://Screens/Button.gd" id="4_f5vpt"]
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_missv")
+script = ExtResource("1_alxfn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -36,7 +36,7 @@ custom_minimum_size = Vector2(75, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("2_4f0h5")
+texture = ExtResource("2_ap4j4")
 expand_mode = 1
 stretch_mode = 4
 
@@ -46,9 +46,9 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 8
 text = "Mason Stooksbury & Johnathan Wood"
 
-[node name="BackButton" parent="MarginContainer/VBoxContainer1" instance=ExtResource("2_u0wdh")]
+[node name="BackButton" parent="MarginContainer/VBoxContainer1" instance=ExtResource("3_x2uvb")]
 layout_mode = 2
 text = "Back"
-script = ExtResource("3_uruwt")
+script = ExtResource("4_f5vpt")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer1/BackButton" to="." method="_on_pressed"]

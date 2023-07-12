@@ -33,5 +33,5 @@ one_shot = true
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="ready" from="SpawnTimer" to="." method="_on_spawn_timer_ready"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
-[connection signal="timeout" from="ColorChangeTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ColorChangeTimer" to="." method="_on_color_change_timer_timeout"]
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

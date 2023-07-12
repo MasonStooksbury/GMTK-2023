@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6i6fhf8avebl"]
+
+[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter/ammo_meter_empty.png" id="1_sfdq6"]
+[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://HealthIndicator.tscn" id="2_6qydv"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Player1Ammo" type="TextureRect" parent="."]
+offset_left = 4.0
+offset_top = 134.0
+offset_right = 24.0
+offset_bottom = 154.0
+texture = ExtResource("1_sfdq6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player2Ammo" type="TextureRect" parent="."]
+offset_left = 294.0
+offset_top = 135.0
+offset_right = 314.0
+offset_bottom = 155.0
+texture = ExtResource("1_sfdq6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Player1HealthIndicator" parent="." instance=ExtResource("2_6qydv")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 25.0
+offset_top = 136.0
+offset_right = 73.0
+offset_bottom = 152.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Player2HealthIndicator" parent="." instance=ExtResource("2_6qydv")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 248.0
+offset_top = 137.0
+offset_right = 296.0
+offset_bottom = 153.0
+grow_horizontal = 1
+grow_vertical = 1
+metadata/_edit_use_anchors_ = true

@@ -1,13 +1,25 @@
 extends CharacterBody2D
 
+@export_enum('Player1', 'Player2') var player_num: String
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const GROUND_SPEED = 2000.0
 const AIR_SPEED = GROUND_SPEED * 0.5
 const DRAG = 1500.0
 const MAX_GROUND_SPEED = 250
 const MAX_AIR_SPEED = 450
 const JUMP_VELOCITY = -350.0
+const BULLET_VELOCITY = 650
+var _velocity = Vector2()
+var player_color: String
+var health = 6
+var is_dead = false
+var ammo = ''
+var ammo_count = 0
+
 const controls = {
-	'p1': {
+	'Player1': {
 		'UP': 'p1_up',
 		'DOWN': 'p1_down',
 		'LEFT': 'p1_left',
@@ -16,7 +28,7 @@ const controls = {
 		'FIRE': 'p1_fire',
 		'DUMP': 'p1_dump', 
 	},
-	'p2': {
+	'Player2': {
 		'UP': 'p2_up',
 		'DOWN': 'p2_down',
 		'LEFT': 'p2_left',
@@ -27,27 +39,13 @@ const controls = {
 	}
 }
 
-const sprites = {
-	'p1': 'res://Assets/player/boi2.png',
-	'p2': 'res://Assets/player/purp_boi2.png'
-}
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-const BULLET_VELOCITY = 650
-
-var _velocity = Vector2()
-var player_color: String
-var health = 6
-var is_dead = false
-@export_enum('p1', 'p2') var player_num: String
-
-var ammo = ''
-var ammo_count = 0
 
 func _ready():
-	player_color = 'REDYELLOWRED' if player_num == 'p1' else 'REDBLUERED'
-	$Sprite2D.texture = load(sprites[player_num])
+	player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
+	$Sprite2D.texture = Global.players[player_num]['texture']
+
+
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed('quit'):
@@ -96,7 +94,9 @@ func _physics_process(delta):
 	velocity = _velocity
 	move_and_slide()
 	_velocity = velocity
-	
+
+
+
 func fell_in_fray():
 	health -= 1
 	if health == 0:
@@ -107,9 +107,12 @@ func fell_in_fray():
 	var random_spawn = player_spawn_array[randi() % player_spawn_array.size()]
 	global_transform.origin = random_spawn.global_transform.origin
 
-func get_action(player_num, action):
-	return controls[player_num][action]
-	
+
+
+func get_action(player, action):
+	return controls[player][action]
+
+
 
 func can_walljump():
 	var leftHit = $LeftRay.is_colliding()
@@ -125,10 +128,14 @@ func can_walljump():
 			return 'LEFT'
 		
 	return 'NONE'
-	
+
+
+
 func can_fire():
 	return ammo_count >=2
-	
+
+
+
 func fire_projectile(color: String):
 	if can_fire():
 		var b = Global.BULLET_SCENE.instantiate()
@@ -138,8 +145,10 @@ func fire_projectile(color: String):
 		get_parent().add_child(b)
 		ammo = ''
 		ammo_count = 0
-	change_hud(Global.color_textures[ammo])
-	
+	change_hud(Global.ammo_meter_textures[ammo])
+
+
+
 func process_hit(color: String):
 	print('%s hit by %s' % [player_color, color])
 	health -= 1
@@ -150,28 +159,34 @@ func process_hit(color: String):
 		return
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 
-func spawn_bucket(position, color):
+
+
+func spawn_bucket(pos, color):
 	var b = Global.GENERIC_BUCKET_SCENE.instantiate()
 	b.color = color
-	b.position = global_transform.origin
+	b.position = pos
 	b.get_node('SpawnTimer').wait_time = 2
 	b.get_node('ColorChangeTimer').autostart = false
 	b.dropped = true
 	get_parent().add_child(b)
 	pass
-	
+
+
+
 func change_hud(new_texture):
 	get_parent().get_node('HUD/%sAmmo' % player_num).texture = new_texture
-	
-func empty_ammo():
-	ammo = ''
-	ammo_count = 0
-	change_hud(Global.color_textures[ammo])
-	
+
+
+
 func dump_ammo():
 	spawn_bucket(global_transform.origin, ammo)
-	empty_ammo()
+	ammo = ''
+	ammo_count = 0
+	change_hud(Global.ammo_meter_textures[ammo])
 
+
+
+# Called by Bullet scene
 func fillBucket(color):
 	if ammo_count == 2:
 		return true
@@ -184,5 +199,5 @@ func fillBucket(color):
 	else:
 		return true
 
-	change_hud(Global.color_textures[ammo])
+	change_hud(Global.ammo_meter_textures[ammo])
 	return false

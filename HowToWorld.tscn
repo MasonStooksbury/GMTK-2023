@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://d25xmwdja50qg"]
+[gd_scene load_steps=11 format=3 uid="uid://d25xmwdja50qg"]
 
 [ext_resource type="PackedScene" uid="uid://b7lxjdm57242o" path="res://Global.tscn" id="1_aftvv"]
 [ext_resource type="Script" path="res://Game.gd" id="1_tm0ar"]
 [ext_resource type="Texture2D" uid="uid://d3vjjmxeq06lu" path="res://Assets/tilemap.png" id="2_kjmk8"]
 [ext_resource type="PackedScene" uid="uid://csjats1uasqe5" path="res://Player.tscn" id="3_nkcjh"]
-[ext_resource type="Texture2D" uid="uid://b7e7qdbtx3fwo" path="res://Assets/ammo_meter/ammo_meter_empty.png" id="4_00oi4"]
-[ext_resource type="PackedScene" uid="uid://xtihi8dtb6xa" path="res://health_indicator.tscn" id="5_fbcen"]
+[ext_resource type="PackedScene" uid="uid://b6i6fhf8avebl" path="res://HUD.tscn" id="4_luyn6"]
 [ext_resource type="PackedScene" uid="uid://dve2hk3i2hrb5" path="res://GenericBucket.tscn" id="6_4q4sq"]
+[ext_resource type="PackedScene" uid="uid://c1qsnqdjaxdxr" path="res://Fray.tscn" id="7_gtvfd"]
+[ext_resource type="PackedScene" uid="uid://dgt6qkdk3cl6q" path="res://PlayerSpawn.tscn" id="8_mnhvw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_52ef6"]
 texture = ExtResource("2_kjmk8")
@@ -198,55 +199,15 @@ limit_smoothed = true
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="p1Ammo" type="TextureRect" parent="HUD"]
-offset_left = 4.0
-offset_top = 134.0
-offset_right = 24.0
-offset_bottom = 154.0
-texture = ExtResource("4_00oi4")
-metadata/_edit_use_anchors_ = true
-
-[node name="p2Ammo" type="TextureRect" parent="HUD"]
-offset_left = 294.0
-offset_top = 135.0
-offset_right = 314.0
-offset_bottom = 155.0
-texture = ExtResource("4_00oi4")
-metadata/_edit_use_anchors_ = true
-
-[node name="p1HealthIndicator" parent="HUD" instance=ExtResource("5_fbcen")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 25.0
-offset_top = 136.0
-offset_right = 73.0
-offset_bottom = 152.0
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="p2HealthIndicator" parent="HUD" instance=ExtResource("5_fbcen")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 248.0
-offset_top = 137.0
-offset_right = 296.0
-offset_bottom = 153.0
-grow_horizontal = 1
-grow_vertical = 1
-metadata/_edit_use_anchors_ = true
+[node name="HUD" parent="." instance=ExtResource("4_luyn6")]
 
 [node name="Player" parent="." instance=ExtResource("3_nkcjh")]
 position = Vector2(-65, 414)
-player_num = "p1"
+player_num = "Player1"
 
 [node name="Player2" parent="." instance=ExtResource("3_nkcjh")]
 position = Vector2(-22, 415)
-player_num = "p2"
+player_num = "Player2"
 
 [node name="Directions" type="Control" parent="."]
 layout_mode = 3
@@ -404,3 +365,14 @@ color = "REDYELLOW"
 [node name="GenericBucket8" parent="Buckets" instance=ExtResource("6_4q4sq")]
 position = Vector2(212, 220)
 color = "YELLOW"
+
+[node name="Fray" parent="." instance=ExtResource("7_gtvfd")]
+position = Vector2(81, 523)
+
+[node name="PlayerSpawnOptions" type="Node2D" parent="."]
+
+[node name="PlayerSpawn" parent="PlayerSpawnOptions" instance=ExtResource("8_mnhvw")]
+position = Vector2(42, -59)
+
+[node name="PlayerSpawn2" parent="PlayerSpawnOptions" instance=ExtResource("8_mnhvw")]
+position = Vector2(207, -76)

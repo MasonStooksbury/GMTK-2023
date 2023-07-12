@@ -1,6 +1,7 @@
 extends Node2D
 
 
+
 var zoomed_in_num = 2.8
 var zoomed_out_num = 1.25
 var distance_min = 10
@@ -20,7 +21,6 @@ func _process(_delta):
 
 
 func handle_zoom(distance):
-	#var zoom_percent = (distance_max - distance_min) / distance
 	var zoom_percent = 1 - (distance / (distance_max - distance_min))
 	var zoom_num = zoomed_in_num * zoom_percent
 	zoom_num = zoomed_out_num if zoom_num < zoomed_out_num else zoom_num

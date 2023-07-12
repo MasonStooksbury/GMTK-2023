@@ -10,11 +10,13 @@ const ENDSCREEN_SCENE = preload('res://Screens/EndScreen.tscn')
 var players = {
 	'Player1': {
 		'texture': load('res://Assets/player/boi2.png'),
-		'name': 'Player1'
+		'name': 'Player 1',
+		'is_dead': false
 	},
 	'Player2': {
 		'texture': load('res://Assets/player/purp_boi2.png'),
-		'name': 'Player2'
+		'name': 'Player 2',
+		'is_dead': false
 	}
 }
 

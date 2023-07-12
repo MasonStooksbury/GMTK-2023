@@ -14,9 +14,11 @@ const BULLET_VELOCITY = 650
 var _velocity = Vector2()
 var player_color: String
 var health = 6
-var is_dead = false
 var ammo = ''
 var ammo_count = 0
+var is_dead = false
+
+
 
 const controls = {
 	'Player1': {
@@ -42,7 +44,7 @@ const controls = {
 
 
 func _ready():
-	player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
+	self.player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
 	$Sprite2D.texture = Global.players[player_num]['texture']
 	spawn_at_random_position()
 
@@ -101,7 +103,7 @@ func _physics_process(delta):
 func fell_in_fray():
 	health -= 1
 	if health == 0:
-		is_dead = true
+		killPlayer()
 		return 
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 	empty_ammo()
@@ -151,7 +153,7 @@ func can_fire():
 
 func fire_projectile(color: String):
 	var b = Global.BULLET_SCENE.instantiate()
-	b.setup(player_color, color)
+	b.setup(self.player_color, color)
 	b.position = global_transform.origin + Vector2(0, -3.0)
 	b.apply_impulse((Vector2.LEFT if $Sprite2D.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
 	get_parent().add_child(b)
@@ -160,12 +162,12 @@ func fire_projectile(color: String):
 
 
 func process_hit(color: String):
-	print('%s hit by %s' % [player_color, color])
+	print('%s hit by %s' % [self.player_color, color])
 	health -= 1
-	if color in player_color:
+	if color in self.player_color:
 		health -= 1
-	if health == 0:
-		is_dead = true
+	if health <= 0:
+		killPlayer()
 		return
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 
@@ -209,3 +211,9 @@ func fillBucket(color):
 
 	change_ammo_meter_texture(Global.ammo_meter_textures[ammo])
 	return false
+
+
+
+func killPlayer():
+	self.is_dead = true
+	Global.players[player_num].is_dead = self.is_dead

@@ -19,16 +19,16 @@ var players = {
 }
 
 # AMMO METER
-var empty:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_empty.png")
-var half_blue:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_blue.png")
-var full_blue:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_blue.png")
-var half_red:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_red.png")
-var full_red:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_red.png")
-var half_yellow:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_yellow.png")
-var full_yellow:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_yellow.png")
-var full_purple:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_purple.png")
-var full_orange:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_orange.png")
-var full_green:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_green.png")
+var empty_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_empty.png")
+var half_blue_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_blue.png")
+var full_blue_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_blue.png")
+var half_red_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_red.png")
+var full_red_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_red.png")
+var half_yellow_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_yellow.png")
+var full_yellow_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_yellow.png")
+var full_purple_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_purple.png")
+var full_orange_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_orange.png")
+var full_green_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_green.png")
 
 # BULLETS
 var blue_blob:CompressedTexture2D = load("res://Assets/blob/blob_blue.png")
@@ -48,19 +48,19 @@ var purple_bucket:CompressedTexture2D = load("res://Assets/bucket/bucket_purple.
 
 # Dictionary with all the ammo meter textures
 var ammo_meter_textures = {
-	"BLUE": half_blue,
-	"BLUEBLUE": full_blue,
-	"BLUERED": full_purple,
-	"BLUEYELLOW": full_green,
-	"RED": half_red,
-	"REDRED": full_red,
-	"REDBLUE": full_purple,
-	"REDYELLOW": full_orange,
-	"YELLOW": half_yellow,
-	"YELLOWYELLOW": full_yellow,
-	"YELLOWRED": full_orange,
-	"YELLOWBLUE": full_green,
-	"": empty
+	"BLUE": half_blue_ammo,
+	"BLUEBLUE": full_blue_ammo,
+	"BLUERED": full_purple_ammo,
+	"BLUEYELLOW": full_green_ammo,
+	"RED": half_red_ammo,
+	"REDRED": full_red_ammo,
+	"REDBLUE": full_purple_ammo,
+	"REDYELLOW": full_orange_ammo,
+	"YELLOW": half_yellow_ammo,
+	"YELLOWYELLOW": full_yellow_ammo,
+	"YELLOWRED": full_orange_ammo,
+	"YELLOWBLUE": full_green_ammo,
+	"": empty_ammo
 }
 
 # Dictionary with all the bullet textures

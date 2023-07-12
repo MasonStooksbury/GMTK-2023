@@ -44,6 +44,7 @@ const controls = {
 func _ready():
 	player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
 	$Sprite2D.texture = Global.players[player_num]['texture']
+	spawn_at_random_position()
 
 
 
@@ -88,7 +89,7 @@ func _physics_process(delta):
 	_velocity.x = clamp(_velocity.x, -MAX_GROUND_SPEED, MAX_GROUND_SPEED)
 	_velocity.y = clamp(_velocity.y,  -MAX_AIR_SPEED, MAX_AIR_SPEED)
 	
-	if Input.is_action_just_pressed(get_action(player_num, 'FIRE')):
+	if Input.is_action_just_pressed(get_action(player_num, 'FIRE')) and can_fire():
 		fire_projectile(ammo)
 	# Apply the velocity changes
 	velocity = _velocity
@@ -103,9 +104,22 @@ func fell_in_fray():
 		is_dead = true
 		return 
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
+	empty_ammo()
+	spawn_at_random_position()
+
+
+
+func spawn_at_random_position():
 	var player_spawn_array = get_parent().get_node('PlayerSpawnOptions').get_children()
 	var random_spawn = player_spawn_array[randi() % player_spawn_array.size()]
 	global_transform.origin = random_spawn.global_transform.origin
+
+
+
+func empty_ammo():
+	ammo = ''
+	ammo_count = 0
+	change_ammo_meter_texture(Global.empty_ammo)
 
 
 
@@ -126,26 +140,22 @@ func can_walljump():
 			return 'RIGHT'
 		elif rightHit:
 			return 'LEFT'
-		
 	return 'NONE'
 
 
 
 func can_fire():
-	return ammo_count >=2
+	return ammo_count >= 2
 
 
 
 func fire_projectile(color: String):
-	if can_fire():
-		var b = Global.BULLET_SCENE.instantiate()
-		b.setup(player_color, color)
-		b.position = global_transform.origin + Vector2(0, -3.0)
-		b.apply_impulse((Vector2.LEFT if $Sprite2D.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
-		get_parent().add_child(b)
-		ammo = ''
-		ammo_count = 0
-	change_hud(Global.ammo_meter_textures[ammo])
+	var b = Global.BULLET_SCENE.instantiate()
+	b.setup(player_color, color)
+	b.position = global_transform.origin + Vector2(0, -3.0)
+	b.apply_impulse((Vector2.LEFT if $Sprite2D.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
+	get_parent().add_child(b)
+	empty_ammo()
 
 
 
@@ -173,16 +183,14 @@ func spawn_bucket(pos, color):
 
 
 
-func change_hud(new_texture):
+func change_ammo_meter_texture(new_texture):
 	get_parent().get_node('HUD/%sAmmo' % player_num).texture = new_texture
 
 
 
 func dump_ammo():
 	spawn_bucket(global_transform.origin, ammo)
-	ammo = ''
-	ammo_count = 0
-	change_hud(Global.ammo_meter_textures[ammo])
+	empty_ammo()
 
 
 
@@ -199,5 +207,5 @@ func fillBucket(color):
 	else:
 		return true
 
-	change_hud(Global.ammo_meter_textures[ammo])
+	change_ammo_meter_texture(Global.ammo_meter_textures[ammo])
 	return false

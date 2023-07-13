@@ -16,15 +16,12 @@ script = ExtResource("1_alxfn")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 14
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = -75.0
-offset_right = 220.0
-offset_bottom = 125.0
+offset_top = -305.0
+offset_bottom = 295.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -32,23 +29,26 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer1"]
-custom_minimum_size = Vector2(75, 100)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_horizontal = 5
+size_flags_vertical = 3
 texture = ExtResource("2_ap4j4")
-expand_mode = 1
-stretch_mode = 4
+expand_mode = 2
+stretch_mode = 5
 
 [node name="Name" type="Label" parent="MarginContainer/VBoxContainer1"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 8
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 40
 text = "Mason Stooksbury & Johnathan Wood"
 
 [node name="BackButton" parent="MarginContainer/VBoxContainer1" instance=ExtResource("3_x2uvb")]
 layout_mode = 2
-text = "Back"
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 20
+text = "  Back  "
+flat = false
 script = ExtResource("4_f5vpt")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer1/BackButton" to="." method="_on_pressed"]

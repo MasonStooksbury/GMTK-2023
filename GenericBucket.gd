@@ -10,8 +10,12 @@ var dropped = false
 var small_waittime = 10
 var big_waittime = 20
 var RNG = RandomNumberGenerator.new()
-
-
+var starting_origin
+var change_direction = false
+var max_move = -3
+var min_move = 3
+var current_move = max_move
+var do_animation = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,14 +23,27 @@ func _ready():
 	color_cycle = Global.primary_colors if is_primary else Global.deduped_complex_colors
 	cycle_max = Global.primary_colors.size()-1 if is_primary else Global.deduped_complex_colors.size()-1
 	current_color = color_cycle.find(self.color)
-	
-	change_bucket_texture(color)
+	starting_origin = global_transform.origin
+	change_bucket_texture(self.color)
 	
 	if not is_primary:
 		scale = Vector2(scale_factor, scale_factor)
 		
 	$DelayTimer.wait_time = RNG.randf_range(0.0, 1.5)
 	$DelayTimer.start()
+
+
+
+func _process(delta):
+	if do_animation:
+		var current_origin = global_transform.origin
+
+		if current_origin.y <= starting_origin.y+max_move:
+			current_move = min_move
+		if current_origin.y >= starting_origin.y+min_move:
+			current_move = max_move
+
+		global_transform.origin.y += current_move*delta*2
 
 
 
@@ -71,3 +88,4 @@ func _on_respawn_timer_timeout():
 
 func _on_delay_timer_timeout():
 	$ColorChangeTimer.start()
+	do_animation = true

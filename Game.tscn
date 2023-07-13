@@ -231,6 +231,9 @@ position = Vector2(316, 40)
 [node name="PlayerSpawn6" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
 position = Vector2(259, 236)
 
+[node name="PlayerSpawn7" parent="PlayerSpawnOptions" instance=ExtResource("8_2rxsc")]
+position = Vector2(293, 434)
+
 [node name="Buckets" type="Node2D" parent="."]
 
 [node name="GenericBucket" parent="Buckets" instance=ExtResource("9_a4owf")]
@@ -238,7 +241,7 @@ position = Vector2(114, 420)
 color = "BLUE"
 
 [node name="GenericBucket6" parent="Buckets" instance=ExtResource("9_a4owf")]
-position = Vector2(-71, 319)
+position = Vector2(-71, 337)
 color = "RED"
 
 [node name="GenericBucket7" parent="Buckets" instance=ExtResource("9_a4owf")]
@@ -270,6 +273,10 @@ position = Vector2(0, 242)
 color = "BLUE"
 
 [node name="GenericBucket3" parent="Buckets" instance=ExtResource("9_a4owf")]
+position = Vector2(230, 239)
+color = "YELLOW"
+
+[node name="GenericBucket13" parent="Buckets" instance=ExtResource("9_a4owf")]
 position = Vector2(230, 239)
 color = "YELLOW"
 

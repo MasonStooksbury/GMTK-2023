@@ -17,8 +17,9 @@ var health = 6
 var ammo = ''
 var ammo_count = 0
 var is_dead = false
-
-
+var squash_max = 1.25
+var squash_min = 0.75
+var jumped = false
 
 const controls = {
 	'Player1': {
@@ -62,17 +63,28 @@ func _physics_process(delta):
 		dump_ammo()
 	
 	# Handle Jump.
-	if Input.is_action_just_pressed(get_action(player_num, 'JUMP')):
-		var cwj = can_walljump()
-		print(cwj)
-		if is_on_floor() or cwj == 'BOTH':
+	if is_on_floor():
+		squash_and_stretch(Vector2(1, 1))
+		if jumped:
+			squash_and_stretch(Vector2(squash_max, squash_min))
+			jumped = false
+		if Input.is_action_just_pressed(get_action(player_num, 'JUMP')):
+			jumped = true
+			var cwj = can_walljump()
+			#if is_on_floor() or cwj == 'BOTH':
 			_velocity.y += JUMP_VELOCITY
-		elif cwj == 'LEFT':
-			_velocity.x += JUMP_VELOCITY * 0.8
-			_velocity.y += JUMP_VELOCITY
-		elif cwj == 'RIGHT':
-			_velocity.x += JUMP_VELOCITY * -0.8
-			_velocity.y += JUMP_VELOCITY
+			if cwj == 'LEFT':
+				_velocity.x += JUMP_VELOCITY * 0.8
+				_velocity.y += JUMP_VELOCITY
+			elif cwj == 'RIGHT':
+				_velocity.x += JUMP_VELOCITY * -0.8
+				_velocity.y += JUMP_VELOCITY
+	else:
+		squash_and_stretch(Vector2(squash_min, squash_max))
+	
+	if Input.is_action_just_released(get_action(player_num, 'JUMP')):
+		if _velocity.y < -100:
+			_velocity.y = -100
 			
 	
 	# Get the input direction and handle the movement/deceleration.
@@ -97,6 +109,12 @@ func _physics_process(delta):
 	velocity = _velocity
 	move_and_slide()
 	_velocity = velocity
+
+
+
+func squash_and_stretch(new_scale):
+	$Sprite2D.scale = lerp($Sprite2D.scale, new_scale, 0.4)
+
 
 
 

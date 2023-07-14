@@ -272,12 +272,8 @@ color = "YELLOW"
 position = Vector2(0, 242)
 color = "BLUE"
 
-[node name="GenericBucket3" parent="Buckets" instance=ExtResource("9_a4owf")]
-position = Vector2(230, 239)
-color = "YELLOW"
-
 [node name="GenericBucket13" parent="Buckets" instance=ExtResource("9_a4owf")]
-position = Vector2(230, 239)
+position = Vector2(215, 239)
 color = "YELLOW"
 
 [node name="GenericBucket4" parent="Buckets" instance=ExtResource("9_a4owf")]

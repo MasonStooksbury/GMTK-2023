@@ -30,10 +30,10 @@ func _ready():
 	current_color = color_cycle.find(self.color)
 	starting_origin = global_transform.origin
 	change_bucket_texture(self.color)
-	
+
 	if not is_primary:
 		scale = Vector2(scale_factor, scale_factor)
-		
+
 	delay_timer.wait_time = RNG.randf_range(0.0, 1.5)
 	delay_timer.start()
 

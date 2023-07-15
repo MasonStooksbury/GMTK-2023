@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var left_ray = $LeftRay
 @onready var right_ray = $RightRay
+@onready var wall_jump_timer = $WallJumpTimer
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -15,6 +17,7 @@ const MAX_GROUND_SPEED = 250
 const MAX_AIR_SPEED = 450
 const JUMP_VELOCITY = -350.0
 const BULLET_VELOCITY = 650
+var was_wall_normal = Vector2.ZERO
 var _velocity = Vector2()
 var player_color: String
 var health = 6
@@ -25,6 +28,7 @@ var squash_max = 1.25
 var squash_min = 0.75
 var jumped = false
 var last_dir = 'LEFT'
+var just_wall_jumped = false
 
 const controls = {
 	'Player1': {
@@ -50,7 +54,8 @@ const controls = {
 func _ready():
 	self.player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
 	sprite.texture = Global.players[player_num]['texture']
-	spawn_at_random_position()
+	if get_parent().name != 'HowTo':
+		spawn_at_random_position()
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed('quit'):
@@ -59,10 +64,6 @@ func _physics_process(delta):
 	if not is_on_floor():
 		_velocity.y += gravity * delta
 
-	# Handle Dump.
-	if Input.is_action_just_pressed(get_action(player_num, 'DUMP')) and ammo_count > 0:
-		dump_ammo()
-
 	# Handle Jump.
 	if is_on_floor():
 		squash_and_stretch(Vector2(1, 1))
@@ -70,25 +71,22 @@ func _physics_process(delta):
 			squash_and_stretch(Vector2(squash_max, squash_min))
 			jumped = false
 		if Input.is_action_just_pressed(get_action(player_num, 'JUMP')):
-			jumped = true
-			var cwj = can_walljump()
-			#if is_on_floor() or cwj == 'BOTH':
 			_velocity.y += JUMP_VELOCITY
-			if cwj == 'LEFT':
-				_velocity.x += JUMP_VELOCITY * 0.8
-				_velocity.y += JUMP_VELOCITY
-			elif cwj == 'RIGHT':
-				_velocity.x += JUMP_VELOCITY * -0.8
-				_velocity.y += JUMP_VELOCITY
 	else:
 		squash_and_stretch(Vector2(squash_min, squash_max))
+
+	if is_on_wall_only() and (Input.is_action_pressed(get_action(player_num, 'LEFT')) or Input.is_action_pressed(get_action(player_num, 'RIGHT'))):
+		_velocity.y -= 3000 * delta
+
+	# Handle Dump.
+	if Input.is_action_just_pressed(get_action(player_num, 'DUMP')) and ammo_count > 0:
+		dump_ammo()
 
 	if Input.is_action_just_released(get_action(player_num, 'JUMP')):
 		if _velocity.y < -100:
 			_velocity.y = -100
 
 	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(get_action(player_num, 'LEFT'), get_action(player_num, 'RIGHT'))
 	var intensity = GROUND_SPEED if is_on_floor() else AIR_SPEED
 

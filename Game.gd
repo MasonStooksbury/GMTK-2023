@@ -27,7 +27,7 @@ func handle_zoom(distance):
 	var zoom_percent = 1 - (distance / (distance_max - distance_min))
 	var zoom_num = zoomed_in_num * zoom_percent
 	zoom_num = zoomed_out_num if zoom_num < zoomed_out_num else zoom_num
-	
+
 	camera.zoom = Vector2(zoom_num, zoom_num)
 
 

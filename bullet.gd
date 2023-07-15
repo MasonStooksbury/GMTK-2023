@@ -1,7 +1,6 @@
 extends RigidBody2D
 
 @onready var timer = $Timer
-#@onready var paint_trail = $PaintTrail
 
 var color: String
 var shooter: String

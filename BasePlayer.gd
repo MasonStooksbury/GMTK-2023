@@ -24,6 +24,7 @@ var is_dead = false
 var squash_max = 1.25
 var squash_min = 0.75
 var jumped = false
+var last_dir = 'LEFT'
 
 const controls = {
 	'Player1': {
@@ -33,7 +34,7 @@ const controls = {
 		'RIGHT': 'p1_right',
 		'JUMP': 'p1_jump',
 		'FIRE': 'p1_fire',
-		'DUMP': 'p1_dump', 
+		'DUMP': 'p1_dump',
 	},
 	'Player2': {
 		'UP': 'p2_up',
@@ -42,18 +43,14 @@ const controls = {
 		'RIGHT': 'p2_right',
 		'JUMP': 'p2_jump',
 		'FIRE': 'p2_fire',
-		'DUMP': 'p2_dump', 
+		'DUMP': 'p2_dump',
 	}
 }
-
-
 
 func _ready():
 	self.player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
 	sprite.texture = Global.players[player_num]['texture']
 	spawn_at_random_position()
-
-
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed('quit'):
@@ -61,11 +58,11 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		_velocity.y += gravity * delta
-	
+
 	# Handle Dump.
 	if Input.is_action_just_pressed(get_action(player_num, 'DUMP')) and ammo_count > 0:
 		dump_ammo()
-	
+
 	# Handle Jump.
 	if is_on_floor():
 		squash_and_stretch(Vector2(1, 1))
@@ -85,27 +82,29 @@ func _physics_process(delta):
 				_velocity.y += JUMP_VELOCITY
 	else:
 		squash_and_stretch(Vector2(squash_min, squash_max))
-	
+
 	if Input.is_action_just_released(get_action(player_num, 'JUMP')):
 		if _velocity.y < -100:
 			_velocity.y = -100
-	
+
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis(get_action(player_num, 'LEFT'), get_action(player_num, 'RIGHT'))
 	var intensity = GROUND_SPEED if is_on_floor() else AIR_SPEED
-	
+
 	if direction:
 		_velocity.x += direction * intensity * delta
 		if direction > 0:
 			sprite.flip_h = false
+			last_dir = 'RIGHT'
 		else:
 			sprite.flip_h = true
+			last_dir = 'LEFT'
 	else:
 		_velocity.x = move_toward(_velocity.x, 0, DRAG * delta)
 	_velocity.x = clamp(_velocity.x, -MAX_GROUND_SPEED, MAX_GROUND_SPEED)
 	_velocity.y = clamp(_velocity.y,  -MAX_AIR_SPEED, MAX_AIR_SPEED)
-	
+
 	if Input.is_action_just_pressed(get_action(player_num, 'FIRE')) and can_fire():
 		fire_projectile(ammo)
 	# Apply the velocity changes
@@ -113,73 +112,55 @@ func _physics_process(delta):
 	move_and_slide()
 	_velocity = velocity
 
-
-
 func squash_and_stretch(new_scale):
 	sprite.scale = lerp(sprite.scale, new_scale, 0.4)
-
-
 
 func fell_in_fray():
 	health -= 1
 	if health == 0:
 		killPlayer()
-		return 
+		return
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 	empty_ammo()
 	spawn_at_random_position()
-
-
 
 func spawn_at_random_position():
 	var player_spawn_array = get_parent().get_node('PlayerSpawnOptions').get_children()
 	var random_spawn = player_spawn_array[randi() % player_spawn_array.size()]
 	global_transform.origin = random_spawn.global_transform.origin
 
-
-
 func empty_ammo():
 	ammo = ''
 	ammo_count = 0
 	change_ammo_meter_texture(Global.empty_ammo)
 
-
-
 func get_action(player, action):
 	return controls[player][action]
-
-
 
 func can_walljump():
 	var leftHit = left_ray.is_colliding()
 	var rightHit = right_ray.is_colliding()
-	
+
 	if not is_on_floor():
-		print('not on floor')
+		print('try walljump')
 		if leftHit and rightHit:
-			return 'BOTH'  
+			return 'BOTH'
 		elif leftHit:
 			return 'RIGHT'
 		elif rightHit:
 			return 'LEFT'
 	return 'NONE'
 
-
-
 func can_fire():
 	return ammo_count >= 2
 
-
-
 func fire_projectile(color: String):
 	var b = Global.BULLET_SCENE.instantiate()
-	b.setup(self.player_color, color)
+	b.setup(self.player_color, color, last_dir)
 	b.position = global_transform.origin + Vector2(0, -3.0)
 	b.apply_impulse((Vector2.LEFT if sprite.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
 	get_parent().add_child(b)
 	empty_ammo()
-
-
 
 func process_hit(color: String):
 	health -= 1
@@ -189,8 +170,6 @@ func process_hit(color: String):
 		killPlayer()
 		return
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
-
-
 
 func spawn_bucket(pos, color):
 	var b = Global.GENERIC_BUCKET_SCENE.instantiate()
@@ -202,18 +181,12 @@ func spawn_bucket(pos, color):
 	get_parent().add_child(b)
 	pass
 
-
-
 func change_ammo_meter_texture(new_texture):
 	get_parent().get_node('HUD/%sAmmo' % player_num).texture = new_texture
-
-
 
 func dump_ammo():
 	spawn_bucket(global_transform.origin, ammo)
 	empty_ammo()
-
-
 
 # Called by Bullet scene
 func fillBucket(color):
@@ -230,8 +203,6 @@ func fillBucket(color):
 
 	change_ammo_meter_texture(Global.ammo_meter_textures[ammo])
 	return false
-
-
 
 func killPlayer():
 	self.is_dead = true

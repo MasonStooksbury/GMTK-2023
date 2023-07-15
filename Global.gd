@@ -97,6 +97,18 @@ var bucket_textures = {
 	"YELLOWBLUE": green_bucket
 }
 
+var color_vals = {
+	"BLUEBLUE": 0x5c6bc0ff,
+	"BLUERED": 0x9c27b0ff,
+	"BLUEYELLOW": 0x0a8f08ff,
+	"REDRED": 0xe84e40ff,
+	"REDBLUE": 0x9c27b0ff,
+	"REDYELLOW": 0xfb8c00ff,
+	"YELLOWYELLOW": 0xfdd835ff,
+	"YELLOWRED": 0xfb8c00ff,
+	"YELLOWBLUE": 0x0a8f08ff
+}
+
 var primary_colors = ['RED', 'BLUE', 'YELLOW']
 var complex_colors = ["BLUEBLUE", "BLUERED", "BLUEYELLOW", "REDRED", "REDBLUE", "REDYELLOW", "YELLOWYELLOW", "YELLOWRED", "YELLOWBLUE"]
 var deduped_complex_colors = ["BLUEBLUE", "REDRED", "YELLOWYELLOW", "REDBLUE", "REDYELLOW", "YELLOWBLUE"]

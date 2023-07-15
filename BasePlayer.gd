@@ -125,7 +125,13 @@ func fell_in_fray():
 		return
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
 	empty_ammo()
-	spawn_at_random_position()
+	spawn_furthest_from_opponent()
+
+
+
+func spawn_furthest_from_opponent():
+	global_transform.origin = get_parent().get_furthest_spawn_point_position(player_num)
+
 
 
 
@@ -145,22 +151,6 @@ func empty_ammo():
 
 func get_action(player, action):
 	return controls[player][action]
-
-
-
-func can_walljump():
-	var leftHit = left_ray.is_colliding()
-	var rightHit = right_ray.is_colliding()
-
-	if not is_on_floor():
-		print('not on floor')
-		if leftHit and rightHit:
-			return 'BOTH'
-		elif leftHit:
-			return 'RIGHT'
-		elif rightHit:
-			return 'LEFT'
-	return 'NONE'
 
 
 

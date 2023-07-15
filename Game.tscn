@@ -200,7 +200,7 @@ rotation_smoothing_enabled = true
 
 [node name="HUD" parent="." instance=ExtResource("3_7snq3")]
 
-[node name="Player" parent="." instance=ExtResource("6_rlejv")]
+[node name="Player1" parent="." instance=ExtResource("6_rlejv")]
 position = Vector2(113, 60)
 player_num = "Player1"
 

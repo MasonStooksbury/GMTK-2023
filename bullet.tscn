@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://u8aj7te1lq8s"]
+[gd_scene load_steps=5 format=3 uid="uid://u8aj7te1lq8s"]
 
+[ext_resource type="Script" path="res://bullet.gd" id="1_q31lc"]
 [ext_resource type="Texture2D" uid="uid://ca58pvijv8oli" path="res://Assets/ammo_meter/ammo_meter_full_red.png" id="2_2g7ve"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kabnc"]
@@ -16,6 +17,7 @@ collision_layer = 8
 collision_mask = 3
 max_contacts_reported = 1
 contact_monitor = true
+script = ExtResource("1_q31lc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
@@ -29,8 +31,9 @@ texture = ExtResource("2_2g7ve")
 one_shot = true
 autostart = true
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="PaintTrail" type="GPUParticles2D" parent="."]
 process_material = SubResource("ParticleProcessMaterial_iuil2")
+trail_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

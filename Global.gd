@@ -1,7 +1,7 @@
 extends Node
 
 # SCENES
-const BULLET_SCENE = preload('res://Bullet.tscn')
+const BULLET_SCENE = preload('res://bullet.tscn')
 const GENERIC_BUCKET_SCENE = preload('res://GenericBucket.tscn')
 const TITLESCREEN_SCENE = preload('res://Screens/TitleScreen.tscn')
 const ENDSCREEN_SCENE = preload('res://Screens/EndScreen.tscn')

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ygfqxbuoptwf" path="res://Assets/player/boi2.png" id="2_k24qd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2h1wy"]
-size = Vector2(12, 18)
+size = Vector2(14, 18)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2

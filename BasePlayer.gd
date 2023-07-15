@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export_enum('Player1', 'Player2') var player_num: String
 
+@onready var sprite = $Sprite2D
+@onready var left_ray = $LeftRay
+@onready var right_ray = $RightRay
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 const GROUND_SPEED = 2000.0
@@ -46,7 +50,7 @@ const controls = {
 
 func _ready():
 	self.player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
-	$Sprite2D.texture = Global.players[player_num]['texture']
+	sprite.texture = Global.players[player_num]['texture']
 	spawn_at_random_position()
 
 
@@ -85,7 +89,6 @@ func _physics_process(delta):
 	if Input.is_action_just_released(get_action(player_num, 'JUMP')):
 		if _velocity.y < -100:
 			_velocity.y = -100
-			
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -95,11 +98,11 @@ func _physics_process(delta):
 	if direction:
 		_velocity.x += direction * intensity * delta
 		if direction > 0:
-			$Sprite2D.flip_h = false
+			sprite.flip_h = false
 		else:
-			$Sprite2D.flip_h = true
+			sprite.flip_h = true
 	else:
-		_velocity.x = move_toward(_velocity.x, 0, DRAG * delta)	
+		_velocity.x = move_toward(_velocity.x, 0, DRAG * delta)
 	_velocity.x = clamp(_velocity.x, -MAX_GROUND_SPEED, MAX_GROUND_SPEED)
 	_velocity.y = clamp(_velocity.y,  -MAX_AIR_SPEED, MAX_AIR_SPEED)
 	
@@ -113,8 +116,7 @@ func _physics_process(delta):
 
 
 func squash_and_stretch(new_scale):
-	$Sprite2D.scale = lerp($Sprite2D.scale, new_scale, 0.4)
-
+	sprite.scale = lerp(sprite.scale, new_scale, 0.4)
 
 
 
@@ -149,8 +151,8 @@ func get_action(player, action):
 
 
 func can_walljump():
-	var leftHit = $LeftRay.is_colliding()
-	var rightHit = $RightRay.is_colliding()
+	var leftHit = left_ray.is_colliding()
+	var rightHit = right_ray.is_colliding()
 	
 	if not is_on_floor():
 		print('not on floor')
@@ -173,14 +175,13 @@ func fire_projectile(color: String):
 	var b = Global.BULLET_SCENE.instantiate()
 	b.setup(self.player_color, color)
 	b.position = global_transform.origin + Vector2(0, -3.0)
-	b.apply_impulse((Vector2.LEFT if $Sprite2D.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
+	b.apply_impulse((Vector2.LEFT if sprite.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
 	get_parent().add_child(b)
 	empty_ammo()
 
 
 
 func process_hit(color: String):
-	print('%s hit by %s' % [self.player_color, color])
 	health -= 1
 	if color in self.player_color:
 		health -= 1

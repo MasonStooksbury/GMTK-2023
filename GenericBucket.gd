@@ -1,5 +1,10 @@
 extends Area2D
+
 @export_enum('RED', 'BLUE', 'YELLOW', 'REDBLUE', 'REDYELLOW', 'BLUEYELLOW') var color: String
+
+@onready var delay_timer = $DelayTimer
+@onready var respawn_timer = $RespawnTimer
+@onready var color_change_timer = $ColorChangeTimer
 
 var current_color
 var scale_factor = 1.5
@@ -29,8 +34,8 @@ func _ready():
 	if not is_primary:
 		scale = Vector2(scale_factor, scale_factor)
 		
-	$DelayTimer.wait_time = RNG.randf_range(0.0, 1.5)
-	$DelayTimer.start()
+	delay_timer.wait_time = RNG.randf_range(0.0, 1.5)
+	delay_timer.start()
 
 
 
@@ -53,8 +58,8 @@ func _on_body_entered(body):
 		if not dropped:
 			self.visible = false
 			set_deferred('monitoring', false)
-			$RespawnTimer.wait_time = small_waittime if is_primary else big_waittime
-			$RespawnTimer.start()
+			respawn_timer.wait_time = small_waittime if is_primary else big_waittime
+			respawn_timer.start()
 		else:
 			queue_free()
 
@@ -87,5 +92,5 @@ func _on_respawn_timer_timeout():
 
 
 func _on_delay_timer_timeout():
-	$ColorChangeTimer.start()
+	color_change_timer.start()
 	do_animation = true

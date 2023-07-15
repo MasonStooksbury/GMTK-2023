@@ -27,6 +27,7 @@ var is_dead = false
 var squash_max = 1.25
 var squash_min = 0.75
 var jumped = false
+var last_dir = 'LEFT'
 var just_wall_jumped = false
 
 const controls = {
@@ -50,15 +51,11 @@ const controls = {
 	}
 }
 
-
-
 func _ready():
 	self.player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
 	sprite.texture = Global.players[player_num]['texture']
 	if get_parent().name != 'HowTo':
 		spawn_at_random_position()
-
-
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed('quit'):
@@ -97,8 +94,10 @@ func _physics_process(delta):
 		_velocity.x += direction * intensity * delta
 		if direction > 0:
 			sprite.flip_h = false
+			last_dir = 'RIGHT'
 		else:
 			sprite.flip_h = true
+			last_dir = 'LEFT'
 	else:
 		_velocity.x = move_toward(_velocity.x, 0, DRAG * delta)
 	_velocity.x = clamp(_velocity.x, -MAX_GROUND_SPEED, MAX_GROUND_SPEED)
@@ -111,12 +110,8 @@ func _physics_process(delta):
 	move_and_slide()
 	_velocity = velocity
 
-
-
 func squash_and_stretch(new_scale):
 	sprite.scale = lerp(sprite.scale, new_scale, 0.4)
-
-
 
 func fell_in_fray():
 	health -= 1
@@ -133,41 +128,29 @@ func spawn_furthest_from_opponent():
 	global_transform.origin = get_parent().get_furthest_spawn_point_position(player_num)
 
 
-
-
 func spawn_at_random_position():
 	var player_spawn_array = get_parent().get_node('PlayerSpawnOptions').get_children()
 	var random_spawn = player_spawn_array[randi() % player_spawn_array.size()]
 	global_transform.origin = random_spawn.global_transform.origin
-
-
 
 func empty_ammo():
 	ammo = ''
 	ammo_count = 0
 	change_ammo_meter_texture(Global.empty_ammo)
 
-
-
 func get_action(player, action):
 	return controls[player][action]
-
-
 
 func can_fire():
 	return ammo_count >= 2
 
-
-
 func fire_projectile(color: String):
 	var b = Global.BULLET_SCENE.instantiate()
-	b.setup(self.player_color, color)
+	b.setup(self.player_color, color, last_dir)
 	b.position = global_transform.origin + Vector2(0, -3.0)
 	b.apply_impulse((Vector2.LEFT if sprite.flip_h else Vector2.RIGHT) * BULLET_VELOCITY)
 	get_parent().add_child(b)
 	empty_ammo()
-
-
 
 func process_hit(color: String):
 	health -= 1
@@ -177,8 +160,6 @@ func process_hit(color: String):
 		killPlayer()
 		return
 	get_parent().get_node('HUD/%sHealthIndicator' % player_num).display_health(health)
-
-
 
 func spawn_bucket(pos, color):
 	var b = Global.GENERIC_BUCKET_SCENE.instantiate()
@@ -190,18 +171,12 @@ func spawn_bucket(pos, color):
 	get_parent().add_child(b)
 	pass
 
-
-
 func change_ammo_meter_texture(new_texture):
 	get_parent().get_node('HUD/%sAmmo' % player_num).texture = new_texture
-
-
 
 func dump_ammo():
 	spawn_bucket(global_transform.origin, ammo)
 	empty_ammo()
-
-
 
 # Called by Bullet scene
 func fillBucket(color):
@@ -218,8 +193,6 @@ func fillBucket(color):
 
 	change_ammo_meter_texture(Global.ammo_meter_textures[ammo])
 	return false
-
-
 
 func killPlayer():
 	self.is_dead = true

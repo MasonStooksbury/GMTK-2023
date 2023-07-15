@@ -55,7 +55,8 @@ const controls = {
 func _ready():
 	self.player_color = 'REDYELLOWRED' if player_num == 'Player1' else 'REDBLUERED'
 	sprite.texture = Global.players[player_num]['texture']
-	spawn_at_random_position()
+	if get_parent().name != 'HowTo':
+		spawn_at_random_position()
 
 
 

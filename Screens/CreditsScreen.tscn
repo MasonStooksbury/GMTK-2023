@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgvuigmxj1r"]
+[gd_scene load_steps=4 format=3 uid="uid://bgvuigmxj1r"]
 
 [ext_resource type="Script" path="res://Screens/ReturnToTitle.gd" id="1_alxfn"]
 [ext_resource type="Texture2D" uid="uid://brvwsjvgax2uo" path="res://Assets/miscellaneous/Us.jpg" id="2_ap4j4"]
 [ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Screens/MenuButton.tscn" id="3_x2uvb"]
-[ext_resource type="Script" path="res://Screens/Button.gd" id="4_f5vpt"]
 
 [node name="CreditsScreen" type="Control"]
 layout_mode = 3
@@ -49,6 +48,6 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 text = "  Back  "
 flat = false
-script = ExtResource("4_f5vpt")
+is_back = 1
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer1/BackButton" to="." method="_on_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer1/BackButton" to="." method="_on_back_button_pressed"]

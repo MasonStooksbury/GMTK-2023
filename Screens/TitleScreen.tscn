@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://7vh61i6cu184"]
 
 [ext_resource type="FontFile" uid="uid://bsek567kn2ciy" path="res://Screens/Outrun future.otf" id="1_1028f"]
+[ext_resource type="Script" path="res://Screens/TitleScreen.gd" id="1_bmmbv"]
 [ext_resource type="PackedScene" uid="uid://eqq4xrm6rs41" path="res://Screens/MenuButton.tscn" id="2_2owdg"]
 [ext_resource type="PackedScene" uid="uid://cva67d22e2l5f" path="res://Game.tscn" id="3_7cktb"]
-[ext_resource type="Script" path="res://Screens/Button.gd" id="3_mrsd3"]
 [ext_resource type="PackedScene" uid="uid://d25xmwdja50qg" path="res://HowToWorld.tscn" id="4_fpuo6"]
 [ext_resource type="PackedScene" uid="uid://bgvuigmxj1r" path="res://Screens/CreditsScreen.tscn" id="6_smyrc"]
 
@@ -14,6 +14,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bmmbv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -48,23 +49,16 @@ theme_override_constants/separation = 5
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "New Game"
-script = ExtResource("3_mrsd3")
 next_scene = ExtResource("3_7cktb")
 
 [node name="HowToButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("2_2owdg")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "How To Play"
-script = ExtResource("3_mrsd3")
 next_scene = ExtResource("4_fpuo6")
 
 [node name="CreditsButton" parent="MarginContainer/Menu/Buttons" instance=ExtResource("2_2owdg")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Credits"
-script = ExtResource("3_mrsd3")
 next_scene = ExtResource("6_smyrc")
-
-[connection signal="pressed" from="MarginContainer/Menu/Buttons/NewGameButton" to="MarginContainer/Menu/Buttons/NewGameButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/Menu/Buttons/HowToButton" to="MarginContainer/Menu/Buttons/HowToButton" method="_on_pressed"]
-[connection signal="pressed" from="MarginContainer/Menu/Buttons/CreditsButton" to="MarginContainer/Menu/Buttons/CreditsButton" method="_on_pressed"]

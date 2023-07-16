@@ -4,3 +4,8 @@
 
 [node name="Global" type="Node"]
 script = ExtResource("1_5lkdq")
+
+[node name="SoundManager" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0

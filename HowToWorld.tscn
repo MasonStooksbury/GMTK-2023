@@ -221,6 +221,7 @@ offset_left = -81.0
 offset_top = 332.0
 offset_right = 56.0
 offset_bottom = 400.0
+theme_override_font_sizes/normal_font_size = 15
 text = "Movement
 Player 1: WASD
 Player 2: Arrows"
@@ -241,6 +242,7 @@ offset_left = 117.0
 offset_top = 282.0
 offset_right = 254.0
 offset_bottom = 350.0
+theme_override_font_sizes/normal_font_size = 15
 text = "Jump!
 Player 1: SPACE
 Player 2: CTRL"
@@ -248,30 +250,31 @@ Player 2: CTRL"
 [node name="RichTextLabel4" type="RichTextLabel" parent="Directions"]
 z_index = -1
 layout_mode = 0
-offset_left = 465.0
-offset_top = 104.0
-offset_right = 622.0
-offset_bottom = 196.0
-text = "Ammo!
-Small buckets charge your cannon halfway"
+offset_left = 460.0
+offset_top = 150.0
+offset_right = 617.0
+offset_bottom = 200.0
+text = "Small buckets provide half ammo"
 
 [node name="RichTextLabel5" type="RichTextLabel" parent="Directions"]
 z_index = -1
 layout_mode = 0
-offset_left = 137.0
-offset_top = 106.0
-offset_right = 331.0
-offset_bottom = 209.0
+offset_left = 110.0
+offset_top = 122.0
+offset_right = 304.0
+offset_bottom = 225.0
+theme_override_font_sizes/normal_font_size = 15
 text = "Color Mixing!
 You can mix ammo colors by collecting small buckets"
 
 [node name="RichTextLabel8" type="RichTextLabel" parent="Directions"]
 z_index = -1
 layout_mode = 0
-offset_left = 357.0
-offset_top = -22.0
-offset_right = 481.0
-offset_bottom = 53.0
+offset_left = 370.0
+offset_top = -1.0
+offset_right = 494.0
+offset_bottom = 74.0
+theme_override_font_sizes/normal_font_size = 15
 text = "Dump Ammo
 Player 1: R
 Player 2: Enter"
@@ -279,21 +282,22 @@ Player 2: Enter"
 [node name="RichTextLabel10" type="RichTextLabel" parent="Directions"]
 z_index = -1
 layout_mode = 0
-offset_left = 578.0
-offset_top = 33.0
-offset_right = 702.0
-offset_bottom = 108.0
+offset_left = 582.0
+offset_top = 17.0
+offset_right = 706.0
+offset_bottom = 92.0
+theme_override_font_sizes/normal_font_size = 15
 text = "Last player alive wins!"
 
 [node name="RichTextLabel9" type="RichTextLabel" parent="Directions"]
 z_index = -1
 layout_mode = 0
 offset_left = 106.0
-offset_top = -21.0
+offset_top = 15.0
 offset_right = 346.0
-offset_bottom = 54.0
-text = "Big Buckets!
-Big buckets fully charge your cannon, but need 2 free slots"
+offset_bottom = 65.0
+theme_override_font_sizes/normal_font_size = 15
+text = "Big buckets fully charge your cannon, but need 2 free slots"
 
 [node name="RichTextLabel7" type="RichTextLabel" parent="Directions"]
 z_index = -1
@@ -302,6 +306,7 @@ offset_left = 326.0
 offset_top = 128.0
 offset_right = 450.0
 offset_bottom = 196.0
+theme_override_font_sizes/normal_font_size = 15
 text = "Fire
 Player 1: F
 Player 2: Shift"
@@ -313,44 +318,46 @@ offset_left = -84.0
 offset_top = 167.0
 offset_right = 107.0
 offset_bottom = 235.0
+theme_override_font_sizes/normal_font_size = 15
 text = "Shooting an enemy with their color does double damage!"
 
 [node name="RichTextLabel3" type="RichTextLabel" parent="Directions"]
 layout_mode = 0
-offset_left = 447.0
-offset_top = 456.0
-offset_right = 662.0
-offset_bottom = 524.0
-text = "You can jump off the walls!"
+offset_left = 690.0
+offset_top = 317.0
+offset_right = 842.0
+offset_bottom = 433.0
+text = "You can slide up walls!
+Just hold against the wall"
 
 [node name="Buckets" type="Node2D" parent="."]
 
 [node name="GenericBucket" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(482, 216)
+position = Vector2(496, 216)
 color = "RED"
 
 [node name="GenericBucket2" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(499, 216)
+position = Vector2(525, 216)
 color = "BLUE"
 
 [node name="GenericBucket3" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(447, 216)
+position = Vector2(413, 216)
 color = "RED"
 
 [node name="GenericBucket4" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(464, 216)
+position = Vector2(451, 216)
 color = "YELLOW"
 
 [node name="GenericBucket5" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(230, 220)
+position = Vector2(256, 219)
 color = "RED"
 
 [node name="GenericBucket6" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(247, 220)
+position = Vector2(282, 222)
 color = "BLUE"
 
 [node name="GenericBucket7" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(195, 220)
+position = Vector2(150, 224)
 color = "RED"
 
 [node name="GenericBucket9" parent="Buckets" instance=ExtResource("6_4q4sq")]
@@ -362,7 +369,7 @@ position = Vector2(248, 70)
 color = "REDYELLOW"
 
 [node name="GenericBucket8" parent="Buckets" instance=ExtResource("6_4q4sq")]
-position = Vector2(212, 220)
+position = Vector2(181, 220)
 color = "YELLOW"
 
 [node name="Fray" parent="." instance=ExtResource("7_gtvfd")]

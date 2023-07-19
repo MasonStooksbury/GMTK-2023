@@ -1,16 +1,22 @@
 [gd_scene load_steps=5 format=3 uid="uid://u8aj7te1lq8s"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_q31lc"]
-[ext_resource type="Texture2D" uid="uid://ca58pvijv8oli" path="res://Assets/ammo_meter/ammo_meter_full_red.png" id="2_2g7ve"]
+[ext_resource type="Texture2D" uid="uid://clflsk66uewgp" path="res://Assets/blob/blob_blue.png" id="2_gim1b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kabnc"]
-size = Vector2(15, 7)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nih5e"]
+radius = 3.5
+height = 12.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iuil2"]
 particle_flag_disable_z = true
-gravity = Vector3(0, 98, 0)
+direction = Vector3(-1, 0, 0)
+spread = 20.0
+gravity = Vector3(0, 50, 0)
+initial_velocity_min = 65.0
+initial_velocity_max = 65.0
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
+scale_max = 2.0
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 8
@@ -21,18 +27,27 @@ script = ExtResource("1_q31lc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_kabnc")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nih5e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("2_2g7ve")
+position = Vector2(-2, 1)
+texture = ExtResource("2_gim1b")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-autostart = true
 
 [node name="PaintTrail" type="GPUParticles2D" parent="."]
+amount = 20
 process_material = SubResource("ParticleProcessMaterial_iuil2")
+trail_enabled = true
+
+[node name="Splatter" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_iuil2")
+one_shot = true
+explosiveness = 1.0
 trail_enabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

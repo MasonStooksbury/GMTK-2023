@@ -15,8 +15,9 @@ var spawn_options_coordinates = []
 
 
 func _ready():
-	for option in $PlayerSpawnOptions.get_children():
-		spawn_options_coordinates.append(option.global_transform.origin)
+	if name != 'HowTo':
+		for option in $PlayerSpawnOptions.get_children():
+			spawn_options_coordinates.append(option.global_transform.origin)
 
 
 

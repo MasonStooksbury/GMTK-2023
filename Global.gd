@@ -9,44 +9,44 @@ const ENDSCREEN_SCENE = preload('res://Screens/EndScreen.tscn')
 # PLAYERS
 var players = {
 	'Player1': {
-		'texture': load('res://Assets/player/boi2.png'),
+		'texture': preload('res://Assets/player/boi2.png'),
 		'name': 'Player 1',
 		'is_dead': false
 	},
 	'Player2': {
-		'texture': load('res://Assets/player/purp_boi2.png'),
+		'texture': preload('res://Assets/player/purp_boi2.png'),
 		'name': 'Player 2',
 		'is_dead': false
 	}
 }
 
 # AMMO METER
-var empty_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_empty.png")
-var half_blue_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_blue.png")
-var full_blue_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_blue.png")
-var half_red_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_red.png")
-var full_red_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_red.png")
-var half_yellow_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_half_yellow.png")
-var full_yellow_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_yellow.png")
-var full_purple_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_purple.png")
-var full_orange_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_orange.png")
-var full_green_ammo:CompressedTexture2D = load("res://Assets/ammo_meter/ammo_meter_full_green.png")
+var empty_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_empty.png")
+var half_blue_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_half_blue.png")
+var full_blue_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_full_blue.png")
+var half_red_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_half_red.png")
+var full_red_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_full_red.png")
+var half_yellow_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_half_yellow.png")
+var full_yellow_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_full_yellow.png")
+var full_purple_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_full_purple.png")
+var full_orange_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_full_orange.png")
+var full_green_ammo:CompressedTexture2D = preload("res://Assets/ammo_meter/ammo_meter_full_green.png")
 
 # BULLETS
-var blue_blob:CompressedTexture2D = load("res://Assets/blob/blob_blue.png")
-var red_blob:CompressedTexture2D = load("res://Assets/blob/blob_red.png")
-var green_blob:CompressedTexture2D = load("res://Assets/blob/blob_green.png")
-var yellow_blob:CompressedTexture2D = load("res://Assets/blob/blob_yellow.png")
-var orange_blob:CompressedTexture2D = load("res://Assets/blob/blob_orange.png")
-var purple_blob:CompressedTexture2D = load("res://Assets/blob/blob_purple.png")
+var blue_blob:CompressedTexture2D = preload("res://Assets/blob/blob_blue.png")
+var red_blob:CompressedTexture2D = preload("res://Assets/blob/blob_red.png")
+var green_blob:CompressedTexture2D = preload("res://Assets/blob/blob_green.png")
+var yellow_blob:CompressedTexture2D = preload("res://Assets/blob/blob_yellow.png")
+var orange_blob:CompressedTexture2D = preload("res://Assets/blob/blob_orange.png")
+var purple_blob:CompressedTexture2D = preload("res://Assets/blob/blob_purple.png")
 
 # BUCKETS
-var blue_bucket:CompressedTexture2D = load("res://Assets/bucket/bucket_blue.png")
-var red_bucket:CompressedTexture2D = load("res://Assets/bucket/bucket_red.png")
-var green_bucket:CompressedTexture2D = load("res://Assets/bucket/bucket_green.png")
-var yellow_bucket:CompressedTexture2D = load("res://Assets/bucket/bucket_yellow.png")
-var orange_bucket:CompressedTexture2D = load("res://Assets/bucket/bucket_orange.png")
-var purple_bucket:CompressedTexture2D = load("res://Assets/bucket/bucket_purple.png")
+var blue_bucket:CompressedTexture2D = preload("res://Assets/bucket/bucket_blue.png")
+var red_bucket:CompressedTexture2D = preload("res://Assets/bucket/bucket_red.png")
+var green_bucket:CompressedTexture2D = preload("res://Assets/bucket/bucket_green.png")
+var yellow_bucket:CompressedTexture2D = preload("res://Assets/bucket/bucket_yellow.png")
+var orange_bucket:CompressedTexture2D = preload("res://Assets/bucket/bucket_orange.png")
+var purple_bucket:CompressedTexture2D = preload("res://Assets/bucket/bucket_purple.png")
 
 # Dictionary with all the ammo meter textures
 var ammo_meter_textures = {

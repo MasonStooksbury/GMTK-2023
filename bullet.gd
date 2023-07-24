@@ -12,8 +12,9 @@ func setup(player_color: String, color_of_ammo, direction: String):
 	self.shooter = player_color
 	self.dir = direction
 	$Sprite2D.flip_h = true if direction == 'LEFT' else false
-	$PaintTrail.process_material.direction = Vector3(1,0,0) if direction == 'RIGHT' else Vector3(-1,0,0)
-	$PaintTrail.process_material.color = Color.hex(Global.color_vals[color_of_ammo])
+	#$PaintTrail.process_material.direction = Vector3(1,0,0) if direction == 'RIGHT' else Vector3(-1,0,0)
+	#$PaintTrail.process_material.color = Color.hex(Global.color_vals[color_of_ammo])
+
 	# Despite the pattern, I have to put $Sprite2D here for this to work
 	# Something to do with onready and how the scene tree works. I'll dig into it later
 	$Sprite2D.texture = Global.blob_textures[color_of_ammo]
@@ -28,15 +29,13 @@ func _on_body_entered(body: Node2D):
 			body.process_hit(self.color)
 			queue_free()
 	else:
-		if self.has_bounced:
-			$Timer.start()
-			pass
-		else:
+		if not self.has_bounced:
 			self.has_bounced = true
-		$PaintTrail.emitting = false
-		$Splatter.process_material.color = Color.hex(Global.color_vals[self.color])
-		$Splatter.process_material.direction =  Vector3(1,0,0) if dir == 'LEFT' else Vector3(-1,0,0)
-		$Splatter.emitting = true
+			$Timer.start()
+		#$PaintTrail.emitting = false
+		#$Splatter.process_material.color = Color.hex(Global.color_vals[self.color])
+		#$Splatter.process_material.direction =  Vector3(1,0,0) if dir == 'LEFT' else Vector3(-1,0,0)
+		#$Splatter.emitting = true
 
 func _on_timer_timeout():
 	queue_free()
